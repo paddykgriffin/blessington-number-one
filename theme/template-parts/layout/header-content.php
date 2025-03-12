@@ -11,7 +11,7 @@
 
 <header id="masthead" class="bg-primary">
 
-	<div>
+	<div class="max-w-7xl mx-auto">
 		<?php
 		if (is_front_page()):
 			?>
