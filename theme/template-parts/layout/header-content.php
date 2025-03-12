@@ -11,7 +11,7 @@
 
 <header id="masthead" class="bg-primary">
 
-	<div class="max-w-7xl mx-auto">
+	<div class="max-w-7xl mx-auto bg-tertiary">
 		<?php
 		if (is_front_page()):
 			?>
@@ -30,7 +30,7 @@
 		<?php endif; ?>
 	</div>
 
-	<nav id="site-navigation" aria-label="<?php esc_attr_e('Main Navigation', '_bless'); ?>">
+	<nav id="site-navigation" aria-label="<?php esc_attr_e('Main Navigation', '_bless'); ?>" class="bg-secondary">
 		<button aria-controls="primary-menu"
 			aria-expanded="false"><?php esc_html_e('Primary Menu', '_bless'); ?></button>
 

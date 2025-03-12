@@ -21,12 +21,12 @@
 				},
 				{
 					"slug": "secondary",
-					"color": "#15803d",
+					"color": "#453A6E",
 					"name": "Secondary"
 				},
 				{
 					"slug": "tertiary",
-					"color": "#0369a1",
+					"color": "#E5C03E",
 					"name": "Tertiary"
 				}
 			]
