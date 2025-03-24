@@ -11,7 +11,37 @@
 
 <footer id="colophon" class="bg-primary">
 
-	<div class="max-w-7xl mx-auto">
+	<div class="max-w-7xl mx-auto grid grid-cols-3 gap-4">
+
+		<div class="div flex">
+			<?php if (has_nav_menu('menu-2')): ?>
+				<nav aria-label="<?php esc_attr_e('Footer Col 1 Menu', '_bless'); ?>" class="bg-yellow-500">
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'menu-2',
+							'menu_class' => 'footer-menu',
+							'depth' => 1,
+						)
+					);
+					?>
+				</nav>
+			<?php endif; ?>
+
+			<?php if (has_nav_menu('menu-3')): ?>
+				<nav aria-label="<?php esc_attr_e('Footer Col 2 Menu', '_bless'); ?>" class="bg-red-500">
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'menu-3',
+							'menu_class' => 'footer-menu',
+							'depth' => 1,
+						)
+					);
+					?>
+				</nav>
+			<?php endif; ?>
+		</div>
 
 		<?php if (is_active_sidebar('sidebar-1')): ?>
 			<aside role="complementary" aria-label="<?php esc_attr_e('Footer', '_bless'); ?>">
@@ -19,19 +49,13 @@
 			</aside>
 		<?php endif; ?>
 
-		<?php if (has_nav_menu('menu-2')): ?>
-			<nav aria-label="<?php esc_attr_e('Footer Menu', '_bless'); ?>">
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'menu-2',
-						'menu_class' => 'footer-menu',
-						'depth' => 1,
-					)
-				);
-				?>
-			</nav>
-		<?php endif; ?>
+		<div>
+			ACF Get in touch content...
+		</div>
+
+
+
+
 
 		<div>
 			<?php

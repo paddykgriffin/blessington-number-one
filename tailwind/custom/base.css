@@ -7,5 +7,36 @@
  * file and is applied both to the front end and in the block editor.
  */
 body {
-	@apply bg-background text-foreground font-sans;
+	@apply bg-background text-foreground font-display;
+}
+
+h5 {
+	@apply font-semibold mb-4;
+
+}
+
+
+
+:root :where(.wp-element-button, .wp-block-button__link) {
+	background-color: var(--color-primary);
+	border-width: 0;
+	color: var(--color-background);
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	padding: calc(0.667em + 2px) calc(1.333em + 2px);
+	text-decoration: none;
+}
+
+
+
+.home-block .wp-block-button__link {
+	@apply px-12;
+}
+.home-block h5 {
+	@apply text-[#3E3B3B];
+}
+
+.home-block p {
+	@apply leading-[36px] pb-12;
 }

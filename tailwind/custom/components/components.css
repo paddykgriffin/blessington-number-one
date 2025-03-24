@@ -19,7 +19,7 @@
  */
 .page-title,
 .entry-title {
-	@apply max-w-content mx-auto mb-6 text-3xl font-extrabold text-neutral-900;
+	@apply relative max-w-content mx-auto mb-12 pb-12 text-6xl font-medium text-neutral-900 after:h-0.5 after:bg-[#D9D9D9] after:block after:mt-2 after:w-24 after:absolute after:bottom-0 after:left-0;
 }
 
 /**
