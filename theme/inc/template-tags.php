@@ -202,7 +202,7 @@ if (!function_exists('_bless_post_thumbnail')):
 		if (is_singular()):
 			?>
 
-			<figure class="m-0 not-prose">
+			<figure class="m-0 not-prose row-start-1 col-start-1 z-0">
 				<?php the_post_thumbnail(); ?>
 			</figure><!-- .post-thumbnail -->
 

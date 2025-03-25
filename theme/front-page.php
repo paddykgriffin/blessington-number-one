@@ -14,6 +14,8 @@
 get_header();
 ?>
 
+<?php get_template_part('template-parts/hero/hero'); ?>
+
 <section id="primary">
     <main id="main">
         <?php
@@ -31,49 +33,9 @@ get_header();
 
         endwhile; // End of the loop.
         ?>
-
-        <div class="div">
-            custom ACF blocks go here...
-        </div>
-
-
-        <div class="bg-yellow-500 py-[48px]">
-            <div class="max-w-7xl mx-auto">
-                <h2 class="entry-title">Latest posts</h2>
-                <div class="grid grid-cols-3 gap-16">
-                    <?php
-                    // the query
-                    $the_query = new WP_Query(array(
-
-                        'posts_per_page' => 3,
-                    ));
-                    ?>
-
-                    <?php if ($the_query->have_posts()): ?>
-                        <?php while ($the_query->have_posts()):
-                            $the_query->the_post(); ?>
-                            <div class="post-wrapper">
-                                <?php the_title('<h3 class="not-prose">', '</h3>'); ?>
-                                <?php the_category(); ?>
-                                <?php the_excerpt(); ?>
-                                <?php _bless_post_thumbnail(); ?>
-                                <?php the_date(); ?>
-
-                                <a href="<?php echo esc_url(get_permalink($post->ID)); ?>"
-                                    title="Read more about this post">Read
-                                    More</a>
-                            </div>
-                        <?php endwhile; ?>
-                        <?php wp_reset_postdata(); ?>
-
-                    <?php else: ?>
-                        <p><?php __('No News'); ?></p>
-                    <?php endif; ?>
-
-                </div>
-            </div>
-        </div>
-
+        <?php get_template_part('template-parts/home/boxes'); ?>
+        <?php get_template_part('template-parts/home/admissions'); ?>
+        <?php get_template_part('template-parts/home/latest-posts'); ?>
     </main><!-- #main -->
 </section><!-- #primary -->
 

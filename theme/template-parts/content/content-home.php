@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('grid grid-cols-2 max-w-7xl items-center mx-auto gap-16  md:py-32'); ?>>
+<div id="post-<?php the_ID(); ?>" <?php post_class('grid grid-cols-2 container items-center mx-auto gap-16  md:py-32'); ?>>
 
 
 
@@ -37,7 +37,7 @@
 		);
 		?>
 
-	</div><!-- .entry-content sample -->
+	</div><!-- .entry-content -->
 
 	<div class="div">
 		<?php _bless_post_thumbnail(); ?>
@@ -66,4 +66,4 @@
 
 	<?php endif; ?>
 
-</article><!-- #post-<?php the_ID(); ?> -->
+</div><!-- #post-<?php the_ID(); ?> -->

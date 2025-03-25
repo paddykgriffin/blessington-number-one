@@ -105,6 +105,9 @@ if (!function_exists('_bless_setup')):
 			)
 		);
 
+
+
+
 		// Add theme support for selective refresh for widgets.
 		add_theme_support('customize-selective-refresh-widgets');
 
@@ -136,8 +139,8 @@ function _bless_widgets_init()
 			'name' => __('Footer', '_bless'),
 			'id' => 'sidebar-1',
 			'description' => __('Add widgets here to appear in your footer.', '_bless'),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget' => '</section>',
+			'before_widget' => '<div id="%1$s" class="widget %2$s text-center mx-auto">',
+			'after_widget' => '</div>',
 			'before_title' => '<h2 class="widget-title">',
 			'after_title' => '</h2>',
 		)
@@ -148,8 +151,8 @@ function _bless_widgets_init()
 			'name' => __('Content Pages', '_bless'),
 			'id' => 'sidebar-2',
 			'description' => __('Add widgets here to appear pages sidebar.', '_bless'),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget' => '</section>',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
 			'before_title' => '<h2 class="widget-title">',
 			'after_title' => '</h2>',
 		)
@@ -217,8 +220,63 @@ require get_template_directory() . '/inc/template-functions.php';
 
 
 
+/**
+ * Functions which enhance the theme by hooking into WordPress.
+ */
 function wpse_remove_edit_post_link($link)
 {
 	return '';
 }
 add_filter('edit_post_link', 'wpse_remove_edit_post_link');
+
+
+// 
+
+/**
+ * Excerpt length
+ */
+function custom_excerpt_length($length)
+{
+	return 20; // Set to 30 words
+}
+add_filter('excerpt_length', 'custom_excerpt_length', 999);
+
+// 
+
+/**
+ * Function to change continue reading to a string
+ */
+function custom_excerpt_more($more)
+{
+	return '..'; // Removes the default "..."
+}
+add_filter('excerpt_more', 'custom_excerpt_more');
+
+
+function wrap_last_word($text, $class = "highlight")
+{
+	$words = explode(' ', $text);
+	if (count($words) > 1) {
+		$last_word = array_pop($words);
+		return implode(' ', $words) . " <span class=\"$class\">$last_word</span>";
+	}
+	return $text; // Return unchanged if there's only one word
+}
+
+function add_menu_link_class($atts, $item, $args, $depth)
+{
+	if ($args->theme_location === 'menu-2') { // Change 'primary' to your menu location
+		$atts['class'] = 'py-1 block hover:text-tertiary transition-all duration-300'; // Add your custom class
+	}
+	return $atts;
+}
+add_filter('nav_menu_link_attributes', 'add_menu_link_class', 10, 4);
+
+function add_menu_link_class2($atts, $item, $args, $depth)
+{
+	if ($args->theme_location === 'menu-3') { // Change 'primary' to your menu location
+		$atts['class'] = 'py-1 block hover:text-tertiary transition-all duration-300'; // Add your custom class
+	}
+	return $atts;
+}
+add_filter('nav_menu_link_attributes', 'add_menu_link_class2', 10, 4);

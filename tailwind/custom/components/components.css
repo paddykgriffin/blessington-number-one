@@ -19,7 +19,7 @@
  */
 .page-title,
 .entry-title {
-	@apply relative max-w-content mx-auto mb-12 pb-12 text-6xl font-medium text-neutral-900 after:h-0.5 after:bg-[#D9D9D9] after:block after:mt-2 after:w-24 after:absolute after:bottom-0 after:left-0;
+	@apply relative mx-auto mb-12 pb-12 text-6xl font-medium text-neutral-900 after:h-0.5 after:bg-[#D9D9D9] after:block after:mt-2 after:w-24 after:absolute after:bottom-0 after:left-0;
 }
 
 /**
@@ -53,4 +53,12 @@
 
 .entry-content > .alignright {
 	@apply float-right ml-8;
+}
+
+.btn {
+	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 px-12 py-2 inline-block
+}
+
+.container {
+	@apply !max-w-7xl mx-auto
 }

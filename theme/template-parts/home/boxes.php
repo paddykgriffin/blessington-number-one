@@ -1,0 +1,45 @@
+<section class="bg-primary py-14" id="boxes">
+    <div class="container">
+        <?php if (have_rows('boxes', 'option')): ?>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-22">
+                <?php while (have_rows('boxes', 'option')):
+                    the_row(); ?>
+
+                    <?php
+                    $colors = ['bg-(--no1-green)', 'bg-(--no1-yellow)', 'bg-(--no1-blue)'];
+                    static $post_index = 0; // Keep track of the post index
+                    $color_class = $colors[$post_index % count($colors)];
+                    $post_index++;
+                    ?>
+
+                    <div class="relative">
+                        <?php
+                        $image = get_sub_field('home_box_image'); // Get image field
+                
+                        if ($image && is_array($image) && isset($image['url'])): ?>
+                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt'] ?? ''); ?>" />
+                        <?php endif; ?>
+
+                        <?php
+
+                        $link = get_sub_field('home_box_link');
+
+
+                        if ($link): ?>
+                            <a href="<?php echo esc_url($link); ?>"
+                                class="<?php echo esc_attr($color_class); ?> absolute bottom-0 left-0 w-full px-5 py-2 flex justify-between items-center text-[30px] font-bold text-white hover:px-12  transition-all duration-300">
+
+                                <?php the_sub_field('home_box_title'); ?>
+                                <span class="material-symbols-outlined !text-[32px] ml-1 !text-white">&#xe5c8;</span>
+                            </a>
+                        <?php endif; ?>
+
+                        <!-- end box -->
+
+                    </div>
+                    <!-- end grid -->
+                <?php endwhile; ?>
+            <?php endif; ?>
+        </div>
+        <!-- end container -->
+</section>
