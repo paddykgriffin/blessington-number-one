@@ -6,26 +6,19 @@
  * This uses the background and foreground colors declared in the `theme.json`
  * file and is applied both to the front end and in the block editor.
  */
-
-:root {
-	--no1-red: #EC494E;
-	--no1-blue: #2D9CDB;
-	--no1-green: #4BA769;
-	--no1-yellow: #E5C03E;
-	--no1-grey: #D9D9D9;
-}
-
-
+ @custom-variant dark (&:where(.dark, .dark *));
 
 body {
 	@apply bg-background text-foreground font-display;
 }
 
-h5 {
-	@apply font-semibold mb-4;
-
+.bg-light {
+    background-color: #ffffff; /* Light mode background */
 }
 
+.bg-dark {
+    background-color: #111827; /* Dark mode background */
+}
 
 
 :root :where(.wp-element-button, .wp-block-button__link) {
@@ -39,13 +32,11 @@ h5 {
 	text-decoration: none;
 }
 
-
-
 .home-block .wp-block-button__link {
 	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 px-12 py-1 inline-block;
 }
 .home-block h5 {
-	@apply text-[#3E3B3B];
+	@apply text-[#3E3B3B] dark:text-white;
 }
 
 .home-block p {

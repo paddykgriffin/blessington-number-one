@@ -19,5 +19,29 @@
 
 <?php wp_footer(); ?>
 
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.getElementById("darkModeToggle");
+            const rootElement = document.documentElement; // Use <html>
+
+            // Check localStorage for dark mode preference
+            if (localStorage.getItem("theme") === "dark") {
+                rootElement.classList.add("dark");
+            } else {
+                rootElement.classList.remove("dark"); // Ensure light mode is applied
+            }
+
+            toggleButton.addEventListener("click", function () {
+                if (rootElement.classList.contains("dark")) {
+                    rootElement.classList.remove("dark");
+                    localStorage.setItem("theme", "light");
+                } else {
+                    rootElement.classList.add("dark");
+                    localStorage.setItem("theme", "dark");
+                }
+            });
+        });
+</script>
+
 </body>
 </html>

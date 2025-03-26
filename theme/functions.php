@@ -1,4 +1,5 @@
 <?php
+
 /**
  * _bless functions and definitions
  *
@@ -134,17 +135,17 @@ add_action('after_setup_theme', '_bless_setup');
  */
 function _bless_widgets_init()
 {
-	register_sidebar(
-		array(
-			'name' => __('Footer', '_bless'),
-			'id' => 'sidebar-1',
-			'description' => __('Add widgets here to appear in your footer.', '_bless'),
-			'before_widget' => '<div id="%1$s" class="widget %2$s text-center mx-auto">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>',
-		)
-	);
+	// register_sidebar(
+	// 	array(
+	// 		'name' => __('Footer', '_bless'),
+	// 		'id' => 'sidebar-1',
+	// 		'description' => __('Add widgets here to appear in your footer.', '_bless'),
+	// 		'before_widget' => '<div id="%1$s" class="widget %2$s text-center mx-auto">',
+	// 		'after_widget' => '</div>',
+	// 		'before_title' => '<h2 class="widget-title">',
+	// 		'after_title' => '</h2>',
+	// 	)
+	// );
 
 	register_sidebar(
 		array(
@@ -263,20 +264,79 @@ function wrap_last_word($text, $class = "highlight")
 	return $text; // Return unchanged if there's only one word
 }
 
+/**
+ * Function custom link on the footer menus
+ */
 function add_menu_link_class($atts, $item, $args, $depth)
 {
-	if ($args->theme_location === 'menu-2') { // Change 'primary' to your menu location
-		$atts['class'] = 'py-1 block hover:text-tertiary transition-all duration-300'; // Add your custom class
+
+	$menu_locations = ['menu-2', 'menu-3']; // Define the menu locations
+
+	if (in_array($args->theme_location, $menu_locations)) {
+		$atts['class'] = 'py-1 block hover:text-tertiary transition-all duration-300 font-light'; // Add your custom class
 	}
 	return $atts;
 }
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 10, 4);
 
-function add_menu_link_class2($atts, $item, $args, $depth)
+
+/**
+ * Function custom link on the primary menu
+ */
+function add_primary_menu_link($atts, $item, $args, $depth)
 {
-	if ($args->theme_location === 'menu-3') { // Change 'primary' to your menu location
-		$atts['class'] = 'py-1 block hover:text-tertiary transition-all duration-300'; // Add your custom class
+
+	$menu_locations = ['menu-1']; // Define the menu locations
+
+	if (in_array($args->theme_location, $menu_locations)) {
+		$atts['class'] = 'text-white py-4 block cursor-pointer hover:text-tertiary transition-all duration-300 font-medium text-lg aria-[current=page]:text-tertiary'; // Add your custom class
 	}
 	return $atts;
 }
-add_filter('nav_menu_link_attributes', 'add_menu_link_class2', 10, 4);
+add_filter('nav_menu_link_attributes', 'add_primary_menu_link', 10, 4);
+
+
+
+/**
+ * Function add google fonts to wp-head
+ */
+function enqueue_google_fonts()
+{
+	wp_enqueue_style('google-quicksand', 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+}
+add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
+
+
+/**
+ * Function add google fonts to wp-head
+ */
+function enqueue_google_fonts2()
+{
+	wp_enqueue_style('google-source-sans', 'https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+}
+add_action('wp_enqueue_scripts', 'enqueue_google_fonts2');
+
+
+/**
+ * Function add google icons to wp-head
+ */
+function enqueue_google_icons()
+{
+	wp_enqueue_style('google-material-icons', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+}
+add_action('wp_enqueue_scripts', 'enqueue_google_icons');
+
+
+function increase_upload_size()
+{
+	return 128 * 1024 * 1024; // 128MB
+}
+add_filter('upload_size_limit', 'increase_upload_size');
+
+
+function custom_upload_mimes($mimes)
+{
+	$mimes['mp4'] = 'video/mp4';
+	return $mimes;
+}
+add_filter('upload_mimes', 'custom_upload_mimes');

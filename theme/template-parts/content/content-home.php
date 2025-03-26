@@ -9,20 +9,20 @@
 
 ?>
 
-<div id="post-<?php the_ID(); ?>" <?php post_class('grid grid-cols-2 container items-center mx-auto gap-16  md:py-32'); ?>>
+<div id="post-<?php the_ID(); ?>" <?php post_class('grid grid-cols-2 container items-center mx-auto gap-16  md:py-32 dark:text-white'); ?>>
 
 
 
 
 
-	<div <?php _bless_content_class('home-block'); ?>>
+	<div <?php _bless_content_class('home-block dark:text-white'); ?>>
 
 		<header class="entry-header">
 			<?php
 			if (!is_front_page()) {
 				the_title('<h1 class="entry-title">', '</h1>');
 			} else {
-				the_title('<h2 class="entry-title not-prose">', '</h2>');
+				the_title('<h2 class="entry-title not-prose dark:text-white">', '</h2>');
 			}
 			?>
 		</header><!-- .entry-header -->

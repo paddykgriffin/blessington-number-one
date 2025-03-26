@@ -9,6 +9,8 @@
  */
 @import "tailwindcss/theme";
 
+
+
 /**
  * Your theme variables are merged with Tailwind’s defaults, either extending
  * the default theme with new variables or overriding the values of existing
@@ -44,11 +46,19 @@
 	--font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
 		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-		"Liberation Mono", "Courier New", monospace;
+	--font-mono: "Source Code Pro", monospace;
 	--font-display: "Quicksand", sans-serif;
 
 	/**
 	 * Add your theme below:
 	 */
+
+	--no1-red: #EC494E;
+	--no1-blue: #2D9CDB;
+	--no1-green: #4BA769;
+	--no1-yellow: #E5C03E;
+	--no1-grey: #D9D9D9;
+
+	
+	
 }

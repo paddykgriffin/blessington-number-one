@@ -30,7 +30,7 @@
                                 class="<?php echo esc_attr($color_class); ?> absolute bottom-0 left-0 w-full px-5 py-2 flex justify-between items-center text-[30px] font-bold text-white hover:px-12  transition-all duration-300">
 
                                 <?php the_sub_field('home_box_title'); ?>
-                                <span class="material-symbols-outlined !text-[32px] ml-1 !text-white">&#xe5c8;</span>
+                                <span class="material-symbols-outlined !text-[32px] ml-1 !text-white">arrow_forward</span>
                             </a>
                         <?php endif; ?>
 

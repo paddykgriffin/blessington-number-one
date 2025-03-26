@@ -60,5 +60,10 @@
 }
 
 .container {
-	@apply !max-w-7xl mx-auto
+	@apply max-w-7xl mx-auto
+}
+
+h5 {
+	@apply font-semibold mb-4;
+
 }

@@ -1,4 +1,4 @@
-<section class="bg-(--no1-grey) py-6" id="admissions">
+<section class="bg-(--no1-grey) py-6 dark:bg-[#121212]" id="admissions">
     <div class="container">
         <div class="flex items-center justify-center gap-4">
             <h3 class="text-[42px] font-light"> <?php

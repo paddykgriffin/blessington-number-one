@@ -16,7 +16,7 @@ get_header();
 
 <?php get_template_part('template-parts/hero/hero'); ?>
 
-<section id="primary">
+<section id="primary" class="">
     <main id="main">
         <?php
         /* Start the Loop */
