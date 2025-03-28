@@ -32,13 +32,21 @@ body {
 	text-decoration: none;
 }
 
-.home-block .wp-block-button__link {
-	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 px-12 py-1 inline-block;
-}
-.home-block h5 {
-	@apply text-[#3E3B3B] dark:text-white;
-}
+.home-block {
 
-.home-block p {
-	@apply leading-[36px] pb-12;
+	h5 {
+		@apply text-[#3E3B3B] dark:text-white;
+	}
+
+	p {
+		@apply leading-[36px] pb-12;
+	}
+
+	.wp-block-button {
+		@apply text-center md:text-left mx-auto md:mx-0;
+	}
+
+	.wp-block-button__link {
+		@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 px-12 py-1 inline-block;
+	}
 }

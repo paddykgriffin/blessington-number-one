@@ -19,7 +19,7 @@
  */
 .page-title,
 .entry-title {
-	@apply relative mx-auto mb-12 pb-12 text-6xl font-medium text-neutral-900 after:h-0.5 after:bg-[#D9D9D9] after:block after:mt-2 after:w-24 after:absolute after:bottom-0 after:left-0;
+	@apply relative mx-auto mb-12 pb-12 text-4xl md:text-6xl font-medium text-neutral-900 after:h-0.5 after:bg-[#D9D9D9] after:block after:mt-2 after:w-24 after:absolute after:bottom-0 after:left-[50%] md:after:left-0 after:translate-x-[-50%] md:after:translate-x-0 text-center md:text-left dark:text-white;
 }
 
 /**
@@ -66,4 +66,8 @@
 h5 {
 	@apply font-semibold mb-4;
 
+}
+
+.primary-link {
+	@apply text-white border-b-1 border-secondary dark:border-stone-800 lg:border-b-0 px-6 lg:px-0 py-4 lg:py-0 block cursor-pointer hover:text-tertiary transition-all duration-300 font-medium text-lg aria-[current=page]:text-tertiary hover:bg-secondary lg:hover:bg-transparent
 }

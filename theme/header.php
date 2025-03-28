@@ -25,7 +25,7 @@
 
 </head>
 
-<body <?php body_class('bg-white text-black dark:bg-[#000000] dark:text-white font-display'); ?>>
+<body <?php body_class('bg-white text-black dark:bg-stone-950 dark:text-white font-display'); ?>>
 
 	<?php wp_body_open(); ?>
 
@@ -34,4 +34,4 @@
 
 		<?php get_template_part('template-parts/layout/header', 'content'); ?>
 
-		<div id="content">
+		<main id="main">

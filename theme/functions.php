@@ -168,6 +168,7 @@ function _bless_scripts()
 {
 	wp_enqueue_style('_bless-style', get_stylesheet_uri(), array(), _BLESS_VERSION);
 	wp_enqueue_script('_bless-script', get_template_directory_uri() . '/js/script.min.js', array(), _BLESS_VERSION, true);
+	wp_enqueue_script('_bless-custom-script', get_template_directory_uri() . '/js/custom.min.js', array(), _BLESS_VERSION, true);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
@@ -242,7 +243,6 @@ function custom_excerpt_length($length)
 }
 add_filter('excerpt_length', 'custom_excerpt_length', 999);
 
-// 
 
 /**
  * Function to change continue reading to a string
@@ -254,6 +254,9 @@ function custom_excerpt_more($more)
 add_filter('excerpt_more', 'custom_excerpt_more');
 
 
+/**
+ * Wrap a class around the last word of a string
+ */
 function wrap_last_word($text, $class = "highlight")
 {
 	$words = explode(' ', $text);
@@ -263,6 +266,23 @@ function wrap_last_word($text, $class = "highlight")
 	}
 	return $text; // Return unchanged if there's only one word
 }
+
+/**
+ * Function custom link on the primary menu
+ */
+function add_primary_menu_link($atts, $item, $args, $depth)
+{
+
+	$menu_locations = ['menu-1']; // Define the menu locations
+
+	if (in_array($args->theme_location, $menu_locations)) {
+		$atts['class'] = 'primary-link'; // Add your custom class
+	}
+	return $atts;
+}
+add_filter('nav_menu_link_attributes', 'add_primary_menu_link', 10, 4);
+
+
 
 /**
  * Function custom link on the footer menus
@@ -278,23 +298,6 @@ function add_menu_link_class($atts, $item, $args, $depth)
 	return $atts;
 }
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 10, 4);
-
-
-/**
- * Function custom link on the primary menu
- */
-function add_primary_menu_link($atts, $item, $args, $depth)
-{
-
-	$menu_locations = ['menu-1']; // Define the menu locations
-
-	if (in_array($args->theme_location, $menu_locations)) {
-		$atts['class'] = 'text-white py-4 block cursor-pointer hover:text-tertiary transition-all duration-300 font-medium text-lg aria-[current=page]:text-tertiary'; // Add your custom class
-	}
-	return $atts;
-}
-add_filter('nav_menu_link_attributes', 'add_primary_menu_link', 10, 4);
-
 
 
 /**
@@ -327,6 +330,10 @@ function enqueue_google_icons()
 add_action('wp_enqueue_scripts', 'enqueue_google_icons');
 
 
+
+/**
+ * Increase upload size
+ */
 function increase_upload_size()
 {
 	return 128 * 1024 * 1024; // 128MB
@@ -334,9 +341,17 @@ function increase_upload_size()
 add_filter('upload_size_limit', 'increase_upload_size');
 
 
+/**
+ * Allow extra mine types
+ */
 function custom_upload_mimes($mimes)
 {
 	$mimes['mp4'] = 'video/mp4';
 	return $mimes;
 }
 add_filter('upload_mimes', 'custom_upload_mimes');
+
+/**
+ * Hide admin bar
+ */
+add_filter('show_admin_bar', '__return_false');

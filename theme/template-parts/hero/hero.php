@@ -1,8 +1,8 @@
-<section class="h-[85dvh] grid relative">
+<section id="hero" class="h-[85dvh] md:h-[55dvh] lg:h-[85dvh] grid relative">
     <div class="container text-center grid col-start-1 row-start-1 items-end z-20">
         <h2 class="text-4xl lg:text-6xl xl:text-7xl 2xl:text-8xl text-white dark:text-white font-mono font-bold drop-shadow-xl"><?php the_field('hero_title', 'option'); ?></h2>
         <?php if (have_rows('boxes', 'option')): ?>
-            <div class="grid text-center  items-center justify-center grid-flow-col gap-6">
+            <div class="grid text-center  items-center justify-center flex-col md:flex-none md:grid-flow-col gap-6">
                 <?php while (have_rows('buttons', 'option')):
                     the_row(); ?>
                     <?php

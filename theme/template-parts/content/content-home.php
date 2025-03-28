@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying pages
  *
@@ -9,20 +10,20 @@
 
 ?>
 
-<div id="post-<?php the_ID(); ?>" <?php post_class('grid grid-cols-2 container items-center mx-auto gap-16  md:py-32 dark:text-white'); ?>>
+<div id="welcome-<?php the_ID(); ?>" <?php post_class('grid md:grid-cols-2 container  items-center mx-auto gap-16  pt-12 pb-1 md:py-18 lg:py-32 dark:text-white '); ?>>
 
 
 
 
 
-	<div <?php _bless_content_class('home-block dark:text-white'); ?>>
+	<div <?php _bless_content_class('home-block dark:text-white text-center md:text-left px-8 xl:px-0 '); ?>>
 
 		<header class="entry-header">
 			<?php
 			if (!is_front_page()) {
 				the_title('<h1 class="entry-title">', '</h1>');
 			} else {
-				the_title('<h2 class="entry-title not-prose dark:text-white">', '</h2>');
+				the_title('<h2 class="entry-title not-prose">', '</h2>');
 			}
 			?>
 		</header><!-- .entry-header -->

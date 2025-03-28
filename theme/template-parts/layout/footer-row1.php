@@ -1,9 +1,9 @@
-<div class="bg-primary py-12">
-    <div class="container grid gap-4 grid-cols-12 items-center">
+<div class="bg-primary dark:bg-stone-950 py-8 md:py-12">
+    <div class="container grid gap-6 lg:gap-4 md:grid-cols-12 items-center px-8 xl:px-0">
 
-        <div class="col-span-3 ">
+        <div class="md:col-span-5 lg:col-span-4 xl:col-span-3 order-1 ">
             <h3 class="text-tertiary text-[24px] font-semibold pb-4">Quick links</h3>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 lg:gap-4 pb-8 lg:pb-0">
                 <?php if (has_nav_menu('menu-2')): ?>
                     <nav aria-label="<?php esc_attr_e('Footer Col 1 Menu', '_bless'); ?>" class="text-white">
                         <?php
@@ -33,15 +33,11 @@
             </div>
         </div>
 
-        <div class="col-span-6 text-center mx-auto">
-            <!-- <?php if (is_active_sidebar('sidebar-1')): ?>
-                <?php dynamic_sidebar('sidebar-1'); ?>
-            <?php endif; ?> -->
-            <img src="<?php bloginfo('template_directory'); ?>/img/logo.png" alt="<?php bloginfo('name'); ?>" />
-					
+        <div class="md:col-span-2 lg:col-span-4 xl:col-span-6 text-center mx-auto order-3 md:order-2">
+            <img src="<?php bloginfo('template_directory'); ?>/img/logo.png" alt="<?php bloginfo('name'); ?>" class="w-28 md:w-36 lg:w-auto" />
         </div>
 
-        <div class="col-span-3">
+        <div class="md:col-span-5 lg:col-span-4 xl:col-span-3 order-2 md:order-3">
             <?php get_template_part('template-parts/layout/footer', 'touch'); ?>
         </div>
     </div>

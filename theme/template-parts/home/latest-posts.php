@@ -1,7 +1,7 @@
-<section class="py-22" id="latest-posts">
-    <div class="container">
-        <h2 class="entry-title dark:text-white">Latest posts</h2>
-        <div class="grid grid-cols-3 gap-16 pt-8">
+<section id="latest-posts" class="py-22">
+    <div class="container px-8 xl:px-0 ">
+        <h2 class="entry-title">Latest posts</h2>
+        <div class="grid md:grid-cols-3 gap-8 md:gap-4 lg:gap-16 pt-8">
             <?php
             // the query
             $the_query = new WP_Query(array(
@@ -31,10 +31,10 @@
                             <?php _bless_post_thumbnail(); ?>
                         </div>
                         <div class="px-4 py-6 bg-background">
-                            <?php the_title('<h3 class="not-prose text-[28px] text-secondary font-semibold ">', '</h3>'); ?>
+                            <?php the_title('<h3 class="not-prose text-[28px] text-secondary font-semibold md:leading-8">', '</h3>'); ?>
 
                             <p class="pb-3 dark:text-black"><?php echo get_the_excerpt(); ?></p>
-                            <div class="flex justify-between items-center">
+                            <div class="flex justify-between lg:items-center md:flex-col lg:flex-row lg:justify-between md:gap-4">
                                 <?php
                                 $categories = get_the_category();
                                 $separator = ', ';
@@ -64,7 +64,7 @@
             <?php endif; ?>
 
         </div>
-        <div class="pt-16">
+        <div class="pt-16 text-center md:text-left">
             <a href="latest-news" class="btn">Read
                 all
                 news</a>
