@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The main template file
  *
@@ -15,39 +16,52 @@
 get_header();
 ?>
 
-	<section id="primary" class="bg-light dark:bg-dark">
-		<main id="main">
-
-		<?php
-		if ( have_posts() ) {
-
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header class="entry-header">
-					<h1 class="entry-title"><?php single_post_title(); ?></h1>
-				</header><!-- .entry-header -->
+<section id="posts" class="posts py-8 lg:py-16">
+	<div class="container mx-auto px-4 py-8">
+		<div class="grid grid-cols-12 gap-8">
+			<div class="col-span-8">
 				<?php
-			endif;
+				if (have_posts()) {
 
-			// Load posts loop.
-			while ( have_posts() ) {
-				the_post();
-				get_template_part( 'template-parts/content/content' );
-			}
+					if (is_home() && ! is_front_page()) :
+				?>
+						<header class="entry-header pb-8">
+							<h1 class="entry-title"><?php single_post_title(); ?></h1>
+						</header><!-- .entry-header -->
+				<?php
+					endif;
 
-			// Previous/next page navigation.
-			_bless_the_posts_navigation();
+					// Load posts loop.
+					while (have_posts()) {
+						the_post();
+						get_template_part('template-parts/content/content');
+					}
 
-		} else {
+					// Previous/next page navigation.
+					_bless_the_posts_navigation();
+				} else {
 
-			// If no content, include the "No posts found" template.
-			get_template_part( 'template-parts/content/content', 'none' );
+					// If no content, include the "No posts found" template.
+					get_template_part('template-parts/content/content', 'none');
+				}
+				?>
 
-		}
-		?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+
+			</div>
+
+
+
+			<?php if (is_active_sidebar('news-sidebar')) : ?>
+				<aside class="col-start-10 col-span-3 pt-8" role="complementary" aria-label="<?php esc_attr_e('Footer', '_tw'); ?>">
+					<?php echo get_search_form(); ?>
+					<?php dynamic_sidebar('news-sidebar'); ?>
+				</aside>
+			<?php endif; ?>
+		</div>
+
+	</div><!-- #main -->
+</section><!-- #primary -->
 
 <?php
 get_footer();

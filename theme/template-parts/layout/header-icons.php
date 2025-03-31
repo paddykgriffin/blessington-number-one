@@ -1,5 +1,5 @@
-<button id="darkModeToggle" class="darkModeToggle hidden lg:block bg-secondary rounded-sm cursor-pointer hover:opacity-75 px-0.5 py-0.5">
-    <span class="material-symbols-outlined dark:!block !hidden">
+<button id="darkModeToggle" class="darkModeToggle hidden lg:block bg-secondary dark:bg-(--no1-yellow) rounded-sm cursor-pointer hover:opacity-75 px-0.5 py-0.5">
+    <span class="material-symbols-outlined dark:!block !hidden dark:text-black/60">
         dark_mode
     </span>
     <span class="material-symbols-outlined text-white !block dark:!hidden">

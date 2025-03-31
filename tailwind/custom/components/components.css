@@ -19,7 +19,7 @@
  */
 .page-title,
 .entry-title {
-	@apply relative mx-auto mb-12 pb-12 text-4xl md:text-6xl font-medium text-neutral-900 after:h-0.5 after:bg-[#D9D9D9] after:block after:mt-2 after:w-24 after:absolute after:bottom-0 after:left-[50%] md:after:left-0 after:translate-x-[-50%] md:after:translate-x-0 text-center md:text-left dark:text-white;
+	@apply relative mx-auto mb-12 pb-12 text-4xl md:text-6xl font-medium text-neutral-900 after:h-0.5 after:bg-[#D9D9D9] dark:after:bg-(--no1-yellow) after:block after:mt-2 after:w-24 after:absolute after:bottom-0 after:left-[50%] md:after:left-0 after:translate-x-[-50%] md:after:translate-x-0 text-center md:text-left dark:text-white;
 }
 
 /**
@@ -35,7 +35,7 @@
 .page-content > *,
 .entry-content > * {
 	/* Content width from the `theme.json` file */
-	@apply max-w-content mx-auto;
+	@apply max-w-content ;
 }
 
 .entry-content > .alignwide {
@@ -55,19 +55,204 @@
 	@apply float-right ml-8;
 }
 
-.btn {
-	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 px-12 py-2 inline-block
+.entry-content > p {
+	@apply pb-6
 }
 
-.container {
-	@apply max-w-7xl mx-auto
-}
-
-h5 {
-	@apply font-semibold mb-4;
-
-}
 
 .primary-link {
 	@apply text-white border-b-1 border-secondary dark:border-stone-800 lg:border-b-0 px-6 lg:px-0 py-4 lg:py-0 block cursor-pointer hover:text-tertiary transition-all duration-300 font-medium text-lg aria-[current=page]:text-tertiary hover:bg-secondary lg:hover:bg-transparent
+}
+
+
+.widget-title {
+	@apply text-2xl font-semibold mb-4
+}
+
+.news-title {
+	@apply text-[28px] text-secondary font-semibold md:leading-8 pb-3 dark:text-(--no1-yellow)
+}
+
+
+/* Home Page */
+.home-block h5 {
+	@apply text-[#3E3B3B] dark:text-white;
+}
+
+.home-block p {
+		@apply leading-[36px] pb-12;
+	}
+
+.home-block  .wp-block-button {
+	@apply text-center md:text-left mx-auto md:mx-0 border-0 text-(--color-background) bg-(--color-primary) rounded-full;
+}
+
+.home-block  .wp-block-button__link {
+	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 px-12 py-1 inline-block dark:bg-(--no1-blue) hover:dark:bg-[#1E6993]
+}
+
+.content-page {
+	@apply min-h-[60dvh]
+}
+
+
+
+/* Pagination Nav Links */
+.nav-links {
+	@apply flex items-center gap-3
+}
+
+.nav-links .page-numbers {
+	@apply rounded-full w-[50px] py-3 text-center hover:bg-gray-200 
+}
+
+.nav-links .page-numbers.current {
+	@apply bg-primary text-white hover:bg-secondary
+}
+
+.nav-links .page-numbers.next {
+	@apply w-auto h-auto hover:text-secondary hover:bg-transparent
+}
+
+/* Search Box */
+
+.search-form {
+	@apply border-[1px] border-solid border-[#D9D9D9] dark:border-gray-100/25 rounded-full bg-transparent text-black mb-24 flex items-center
+}
+
+.search-form input {
+	@apply border-0 outline-none px-4 py-3 rounded-full bg-transparent text-black w-[90%] dark:text-white
+}
+
+.search-form input::placeholder {
+	@apply dark:text-red-500;
+}
+
+.search-form button {
+	@apply block  h-[24px]
+}
+
+.posts .widget_block {
+	@apply bg-(--no1-light-grey) px-6 py-4 pb-8 rounded-xl dark:bg-stone-900
+}
+
+.posts .widget-title {
+	@apply text-primary pb-2 dark:text-(--no1-yellow)
+}
+
+
+.posts .wp-block-categories-list li {
+	@apply py-2 flex 
+}
+
+.posts .wp-block-categories-list li  a {
+	@apply flex hover:text-(--no1-green) transition-all duration-300 dark:hover:text-(--no1-yellow) hover:pl-3  before:w-[12px] before:h-[24px] before:block before:mr-2 before:content-['>'] before:font-semibold before:text-(--no1-red)
+}
+
+.posts .wp-block-archives-list li  a {
+	@apply hover:pl-3 transition-all  duration-300 hover:text-(--no1-green) dark:hover:text-(--no1-yellow)
+}
+
+
+.content-page aside .menu {
+	@apply bg-(--no1-light-grey) px-6 py-8 rounded-xl dark:bg-stone-900
+}
+.content-page aside .menu li {
+    @apply py-2 flex before:w-[12px] before:h-[24px] before:block before:mr-2 before:content-['>'] before:font-semibold before:text-(--no1-red);
+}
+
+
+.content-page aside .menu li a {
+	@apply hover:text-(--no1-green) transition-all duration-300 dark:hover:text-(--no1-yellow) 
+}
+
+
+.prose :where(h2):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+	@apply !text-5xl !text-secondary !mt-0 !font-semibold !mb-12 dark:!text-(--no1-yellow)
+}
+.prose :where(h3):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+	@apply !text-4xl !text-secondary !font-semibold !mb-8 dark:!text-(--no1-yellow)
+}
+.prose :where(h4):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+	@apply !text-2xl !text-secondary !font-semibold !mb-6 dark:!text-(--no1-yellow)
+}
+
+.contact-page h1 {
+	@apply !text-center after:!left-[50%] after:!translate-x-[-50%] md:after:!translate-x-[-50%]
+}
+
+.single-page h1 {
+	@apply !text-center after:!left-[50%] after:!translate-x-[-50%] md:after:!translate-x-[-50%]
+}
+
+.contact-page .get-in-touch {
+	@apply bg-primary rounded-2xl p-4 max-w-[330px] text-left mx-auto dark:bg-stone-900 mt-12
+}
+
+.contact-page .get-in-touch h3{
+	@apply text-center
+}
+
+.get-in-touch {
+	@apply text-white
+}
+
+/* Contact Form */
+.wpcf7-form {
+	@apply !pb-12 
+}
+
+.wpcf7-form label {
+	@apply block font-semibold text-xl text-left  py-3 italic text-secondary dark:text-(--no1-yellow)
+}
+
+.wpcf7-form br {
+	@apply hidden
+}
+
+.wpcf7-form-control-wrap {
+	@apply block text-left
+}
+
+.wpcf7-form input[type='text'] {
+	@apply border border-gray-300 py-2;
+}
+
+.wpcf7-form input[type='email'] {
+	@apply border border-gray-300 py-2;
+}
+
+.wpcf7-form textarea {
+	@apply border border-gray-300 py-2;
+}
+
+.wpcf7-form input[type='submit'] {
+	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 px-16 py-2 block mt-6 dark:bg-(--no1-blue) hover:dark:bg-[#1E6993]
+}
+
+
+/* Single Post */
+
+.single-page .navigation {
+	@apply mt-5
+}
+
+.single-page .nav-links {
+	@apply flex items-center justify-between
+}
+
+.single-page .nav-previous {
+	@apply bg-(--no1-light-grey) px-2 py-2 rounded-2xl
+}
+
+.single-page .nav-next {
+	@apply bg-(--no1-light-grey) px-2 py-2 rounded-2xl
+}
+
+.single-page .nav-previous span {
+	@apply first:font-semibold
+}
+
+.single-page .nav-next span {
+	@apply first:font-semibold
 }

@@ -39,7 +39,7 @@ if (!defined('_BLESS_TYPOGRAPHY_CLASSES')) {
 	 */
 	define(
 		'_BLESS_TYPOGRAPHY_CLASSES',
-		'prose prose-neutral max-w-none prose-a:text-primary'
+		'prose prose-neutral max-w-none prose-a:text-primary dark:text-white'
 	);
 }
 
@@ -85,7 +85,8 @@ if (!function_exists('_bless_setup')):
 				'menu-1' => __('Primary', '_bless'),
 				'menu-2' => __('Footer Left Menu', '_bless'),
 				'menu-3' => __('Footer Right Menu', '_bless'),
-				'menu-4' => __('Subpage Menu', '_bless'),
+				'menu-4' => __('About Pages Menu', '_bless'),
+				'menu-5' => __('Parents Pages Menu', '_bless'),
 			)
 		);
 
@@ -107,8 +108,6 @@ if (!function_exists('_bless_setup')):
 		);
 
 
-
-
 		// Add theme support for selective refresh for widgets.
 		add_theme_support('customize-selective-refresh-widgets');
 
@@ -123,7 +122,7 @@ if (!function_exists('_bless_setup')):
 		add_theme_support('responsive-embeds');
 
 		// Remove support for block templates.
-		remove_theme_support('block-templates');
+		//remove_theme_support('block-templates');
 	}
 endif;
 add_action('after_setup_theme', '_bless_setup');
@@ -135,22 +134,47 @@ add_action('after_setup_theme', '_bless_setup');
  */
 function _bless_widgets_init()
 {
-	// register_sidebar(
-	// 	array(
-	// 		'name' => __('Footer', '_bless'),
-	// 		'id' => 'sidebar-1',
-	// 		'description' => __('Add widgets here to appear in your footer.', '_bless'),
-	// 		'before_widget' => '<div id="%1$s" class="widget %2$s text-center mx-auto">',
-	// 		'after_widget' => '</div>',
-	// 		'before_title' => '<h2 class="widget-title">',
-	// 		'after_title' => '</h2>',
-	// 	)
-	// );
+	register_sidebar(
+		array(
+			'name' => __('News Sidebar', '_bless'),
+			'id' => 'news-sidebar',
+			'description' => __('Add widgets here on the latest news page.', '_bless'),
+			'before_widget' => '<div id="%1$s" class="widget %2$s mb-8">',
+			'after_widget' => '</div>',
+			'before_title' => '<h2 class="widget-title">',
+			'after_title' => '</h2>',
+		)
+	);
 
 	register_sidebar(
 		array(
-			'name' => __('Content Pages', '_bless'),
-			'id' => 'sidebar-2',
+			'name' => __('About Sidebar', '_bless'),
+			'id' => 'sidebar-about',
+			'description' => __('Add widgets here to appear pages sidebar.', '_bless'),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h2 class="widget-title">',
+			'after_title' => '</h2>',
+		)
+	);
+
+
+	register_sidebar(
+		array(
+			'name' => __('Parents Sidebar', '_bless'),
+			'id' => 'sidebar-parents',
+			'description' => __('Add widgets here to appear pages sidebar.', '_bless'),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h2 class="widget-title">',
+			'after_title' => '</h2>',
+		)
+	);
+
+	register_sidebar(
+		array(
+			'name' => __('Contact Sidebar', '_bless'),
+			'id' => 'sidebar-contact',
 			'description' => __('Add widgets here to appear pages sidebar.', '_bless'),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
@@ -355,3 +379,20 @@ add_filter('upload_mimes', 'custom_upload_mimes');
  * Hide admin bar
  */
 add_filter('show_admin_bar', '__return_false');
+
+
+function custom_search_form($form)
+{
+	$form = '
+    <form role="search" method="get" class="search-form" action="' . esc_url(home_url('/')) . '">
+        <label class="sr-only">
+           Search
+        </label>
+		 <input type="search" class="search-field" placeholder="' . esc_attr__('Search', '_bless') . '" value="' . get_search_query() . '" name="s" />
+        <button type="submit" class="search-submit">
+            <span class="material-symbols-outlined text-primary">search</span>
+        </button>
+    </form>';
+	return $form;
+}
+add_filter('get_search_form', 'custom_search_form');

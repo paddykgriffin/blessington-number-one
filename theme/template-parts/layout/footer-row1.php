@@ -1,4 +1,4 @@
-<div class="bg-primary dark:bg-stone-950 py-8 md:py-12">
+<div class="bg-primary dark:bg-stone-900 py-8 md:py-12">
     <div class="container grid gap-6 lg:gap-4 md:grid-cols-12 items-center px-8 xl:px-0">
 
         <div class="md:col-span-5 lg:col-span-4 xl:col-span-3 order-1 ">

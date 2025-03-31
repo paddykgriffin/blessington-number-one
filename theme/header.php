@@ -29,7 +29,7 @@
 
 	<?php wp_body_open(); ?>
 
-	<div id="page">
+	<div id="site-wrapper">
 		<a href="#content" class="sr-only"><?php esc_html_e('Skip to content', '_bless'); ?></a>
 
 		<?php get_template_part('template-parts/layout/header', 'content'); ?>

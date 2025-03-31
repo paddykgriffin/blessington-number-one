@@ -1,4 +1,4 @@
-<div class="bg-secondary dark:bg-stone-900 text-white py-8 md:py-3">
+<div class="bg-secondary dark:bg-stone-800 text-white py-8 md:py-3">
     <div class="container flex flex-col lg:flex-row md:justify-between md:items-center px-8 xl:px-0 ">
         <?php
         $_bless_blog_info = get_bloginfo('name');

@@ -21,32 +21,17 @@ body {
 }
 
 
-:root :where(.wp-element-button, .wp-block-button__link) {
-	background-color: var(--color-primary);
-	border-width: 0;
-	color: var(--color-background);
-	font-family: inherit;
-	font-size: inherit;
-	line-height: inherit;
-	padding: calc(0.667em + 2px) calc(1.333em + 2px);
-	text-decoration: none;
+/* Standard Block Styles */
+
+.container {
+	@apply max-w-7xl mx-auto
 }
 
-.home-block {
+h5 {
+	@apply font-semibold mb-4;
 
-	h5 {
-		@apply text-[#3E3B3B] dark:text-white;
-	}
+}
 
-	p {
-		@apply leading-[36px] pb-12;
-	}
-
-	.wp-block-button {
-		@apply text-center md:text-left mx-auto md:mx-0;
-	}
-
-	.wp-block-button__link {
-		@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 px-12 py-1 inline-block;
-	}
+.btn {
+	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 px-12 py-2 inline-block dark:bg-(--no1-blue) hover:dark:bg-[#1E6993]
 }

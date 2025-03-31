@@ -6,7 +6,7 @@
                 <?php while (have_rows('buttons', 'option')):
                     the_row(); ?>
                     <?php
-                    $colors = ['bg-secondary text-white hover:bg-primary', 'bg-white text-primary hover:bg-secondary hover:text-white'];
+                    $colors = ['bg-secondary text-white hover:bg-primary  dark:bg-(--no1-blue) hover:dark:bg-[#1E6993]', 'bg-white text-primary dark:text-(--no1-blue) hover:bg-secondary dark:hover:bg-(--no1-blue)  hover:text-white '];
                     static $post_index = 0; // Keep track of the post index
                     $color_class = $colors[$post_index % count($colors)];
                     $post_index++;

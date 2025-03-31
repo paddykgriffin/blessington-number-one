@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Custom template tags for this theme
  *
@@ -15,7 +16,7 @@ if (!function_exists('_bless_posted_on')):
 	{
 		$time_string = '<time datetime="%1$s">%2$s</time>';
 		if (get_the_time('U') !== get_the_modified_time('U')) {
-			$time_string = '<time datetime="%1$s">%2$s</time><time datetime="%3$s">%4$s</time>';
+			$time_string = '<time datetime="%1$s">%2$s</time>';
 		}
 
 		$time_string = sprintf(
@@ -27,7 +28,7 @@ if (!function_exists('_bless_posted_on')):
 		);
 
 		printf(
-			'<a href="%1$s" rel="bookmark">%2$s</a>',
+			'<a href="%1$s" rel="bookmark" class="bg-red-500"><%2$s</a>',
 			esc_url(get_permalink()),
 			$time_string // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		);
@@ -75,7 +76,7 @@ if (!function_exists('_bless_entry_meta')):
 		if ('post' === get_post_type()) {
 
 			// Posted by.
-			_bless_posted_by();
+			//_bless_posted_by();
 
 			// Posted on.
 			_bless_posted_on();
@@ -137,20 +138,32 @@ if (!function_exists('_bless_entry_footer')):
 		if ('post' === get_post_type()) {
 
 			// Posted by.
-			_bless_posted_by();
+			//_bless_posted_by();
 
 			// Posted on.
-			_bless_posted_on();
+			//_bless_posted_on();
 
 			/* translators: used between list items, there is a space after the comma. */
-			$categories_list = get_the_category_list(__(', ', '_bless'));
-			if ($categories_list) {
-				printf(
-					/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
-					'<span class="sr-only">%1$s</span>%2$s',
-					esc_html__('Posted in', '_bless'),
-					$categories_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				);
+			// $categories_list = get_the_category_list(__(', ', '_bless'));
+			// if ($categories_list) {
+			// 	printf(
+			// 		/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
+			// 		'<span class="sr-only">%1$s</span>%2$s',
+			// 		esc_html__('Posted in', '_bless'),
+			// 		$categories_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// 	);
+			// }
+
+			$categories = get_the_category();
+			$separator = ', ';
+			$output = '';
+
+			if ($categories) {
+				foreach ($categories as $category) {
+					$output .= '<a class="text-[14px] flex items-center dark:text-white hover:text-(--no1-red)  hover:px-3 transition-all duration-300 " href="' . get_category_link($category->term_id) . '">
+							<span class="material-symbols-outlined text-[10px] text-(--no1-red)">bookmark</span>' . $category->name . '</a>' . $separator;
+				}
+				echo trim($output, $separator);
 			}
 
 			/* translators: used between list items, there is a space after the comma. */
@@ -169,6 +182,8 @@ if (!function_exists('_bless_entry_footer')):
 		if (!is_singular()) {
 			_bless_comment_count();
 		}
+
+
 
 		// Edit post link.
 		edit_post_link(
@@ -200,23 +215,36 @@ if (!function_exists('_bless_post_thumbnail')):
 		}
 
 		if (is_singular()):
-			?>
+?>
 
 			<figure class="m-0 not-prose row-start-1 col-start-1 z-0">
 				<?php the_post_thumbnail(); ?>
 			</figure><!-- .post-thumbnail -->
 
-			<?php
+		<?php
 		else:
+		?>
+
+			<?php
+			$colors = ['bg-(--no1-red)', 'bg-(--no1-blue)', 'bg-(--no1-green)'];
+			static $post_index = 0; // Keep track of the post index
+			$color_class = $colors[$post_index % count($colors)];
+			$post_index++;
 			?>
 
-			<figure>
+			<figure class="rounded-2xl relative">
+
+				<?php
+				echo '<div class="' . $color_class . ' absolute z-10 py-2 px-3 rounded-md text-center left-3 top-3 " id="date">
+                                    <span class="block font-bold leading-6 text-[30px] text-white">' . get_the_date('d') . '</span>
+                                    <span class="block font-light leading-4 text-white">' . get_the_date('M') . '</span></div>';
+				?>
 				<a href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-					<?php the_post_thumbnail(); ?>
+					<?php the_post_thumbnail('full', array('class' => 'rounded-2xl')); ?>
 				</a>
 			</figure>
 
-			<?php
+<?php
 		endif; // End is_singular().
 	}
 endif;
@@ -312,5 +340,22 @@ if (!function_exists('_bless_content_class')):
 		// Separates class names with a single space, preparing them for the
 		// post content wrapper.
 		echo 'class="' . esc_attr(implode(' ', $combined_classes)) . '"';
+	}
+endif;
+
+if (!function_exists('_bless_permalink')):
+	/**
+	 * Returns the permalink for the current post.
+	 *
+	 * @return void
+	 */
+	function _bless_permalink()
+	{
+		printf(
+			'<a href="%1$s" class="text-[14px] flex items-center font-medium hover:text-(--no1-green) transition-all duration-300 hover:px-3 dark:text-white">%2$s<span class="material-symbols-outlined !text-[16px] ml-1">%3$s</span></a>',
+			esc_url(get_permalink()),
+			esc_html__('Read More', '_bless'),
+			'arrow_forward'
+		);
 	}
 endif;

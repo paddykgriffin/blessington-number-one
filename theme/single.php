@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all single posts
  *
@@ -10,24 +11,24 @@
 get_header();
 ?>
 
-	<section id="primary">
-		<main id="main">
-
+<section id="single" class="single-page posts py-8 lg:py-16">
+	<div class="container mx-auto px-4 py-8">
+		<div class="max-w-[46rem] mx-auto text-center">
 			<?php
 			/* Start the Loop */
-			while ( have_posts() ) :
+			while (have_posts()) :
 				the_post();
-				get_template_part( 'template-parts/content/content', 'single' );
+				get_template_part('template-parts/content/content', 'single');
 
-				if ( is_singular( 'post' ) ) {
+				if (is_singular('post')) {
 					// Previous/next post navigation.
 					the_post_navigation(
 						array(
-							'next_text' => '<span aria-hidden="true">' . __( 'Next Post', '_bless' ) . '</span> ' .
-								'<span class="sr-only">' . __( 'Next post:', '_bless' ) . '</span> <br/>' .
+							'next_text' => '<span aria-hidden="true">' . __('Next  Article', '_bless') . '</span> ' .
+								'<span class="sr-only">' . __('Next post:', '_bless') . '</span> <br/>' .
 								'<span>%title</span>',
-							'prev_text' => '<span aria-hidden="true">' . __( 'Previous Post', '_bless' ) . '</span> ' .
-								'<span class="sr-only">' . __( 'Previous post:', '_bless' ) . '</span> <br/>' .
+							'prev_text' => '<span aria-hidden="true">' . __('Previous Article', '_bless') . '</span> ' .
+								'<span class="sr-only">' . __('Previous post:', '_bless') . '</span> <br/>' .
 								'<span>%title</span>',
 						)
 					);
@@ -35,16 +36,18 @@ get_header();
 
 				// If comments are open, or we have at least one comment, load
 				// the comment template.
-				if ( comments_open() || get_comments_number() ) {
+				if (comments_open() || get_comments_number()) {
 					comments_template();
 				}
 
-				// End the loop.
+			// End the loop.
 			endwhile;
 			?>
+		</div>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+	</div><!-- #main -->
+</section><!-- #primary -->
+
 
 <?php
 get_footer();
