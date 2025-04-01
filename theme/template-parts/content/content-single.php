@@ -10,13 +10,13 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('single-post'); ?>>
 
 	<header class="entry-header">
 		<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 
 		<?php if (! is_page()) : ?>
-			<div class="entry-meta py-4 mb-4 bg-indigo-500 flex justify-between items-center">
+			<div class="entry-meta py-4 mb-4 flex justify-center items-center">
 				<?php _bless_entry_meta(); ?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
@@ -48,10 +48,13 @@
 			)
 		);
 		?>
+
+
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer bg-orange-500 mt-4 hidden">
+	<footer class="entry-footer py-4 mb-4 bg-indigo-500 flex justify-between items-center">
 		<?php _bless_entry_footer(); ?>
+
 	</footer><!-- .entry-footer -->
 
 </article><!-- #post-${ID} -->

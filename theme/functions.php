@@ -396,3 +396,35 @@ function custom_search_form($form)
 	return $form;
 }
 add_filter('get_search_form', 'custom_search_form');
+
+
+function custom_breadcrumbs()
+{
+	$separator = ' <span class="px-3 material-symbols-outlined text-stone-700">chevron_right</span> ';
+	echo '<nav class="breadcrumbs bg-(--no1-light-grey) py-2 "><div class="container flex items-center px-4">';
+
+	if (!is_home() && !is_front_page()) {
+		echo '<a href="' . home_url() . '">Home</a>' . $separator;
+
+		if (is_category()) {
+			echo single_cat_title('', false);
+		} elseif (is_single()) {
+			the_category(', ');
+			echo $separator;
+			the_title();
+		} elseif (is_page()) {
+			the_title();
+		} elseif (is_404()) {
+			echo '404';
+		} elseif (is_search()) {
+			echo 'Search results for "' . get_search_query() . '"';
+		} elseif (is_archive()) {
+			the_archive_title();
+		}
+	} else {
+		echo '<a href="' . home_url() . '" class="text-stone-700">Home</a>' . $separator .
+			'<span class="text-secondary">Latest News</span>'; // Optional message for index.php
+	}
+
+	echo '</div></nav>';
+}

@@ -14,6 +14,8 @@ if (!function_exists('_bless_posted_on')):
 	 */
 	function _bless_posted_on()
 	{
+		$time_format = 'j F'; // "j" = Day (without leading zero), "F" = Full month name
+
 		$time_string = '<time datetime="%1$s">%2$s</time>';
 		if (get_the_time('U') !== get_the_modified_time('U')) {
 			$time_string = '<time datetime="%1$s">%2$s</time>';
@@ -22,13 +24,13 @@ if (!function_exists('_bless_posted_on')):
 		$time_string = sprintf(
 			$time_string,
 			esc_attr(get_the_date(DATE_W3C)),
-			esc_html(get_the_date()),
+			esc_html(get_the_date($time_format)),
 			esc_attr(get_the_modified_date(DATE_W3C)),
 			esc_html(get_the_modified_date())
 		);
 
 		printf(
-			'<a href="%1$s" rel="bookmark" class="bg-red-500"><%2$s</a>',
+			'<div class="publish-date font-semibold"><a href="%1$s" rel="bookmark">%2$s</a></div>',
 			esc_url(get_permalink()),
 			$time_string // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		);
@@ -43,7 +45,7 @@ if (!function_exists('_bless_posted_by')):
 	{
 		printf(
 			/* translators: 1: posted by label, only visible to screen readers. 2: author link. 3: post author. */
-			'<span class="sr-only">%1$s</span><span class="author vcard"><a class="url fn n" href="%2$s">%3$s</a></span>',
+			'<div class="publish-author"><span class="sr-only">%1$s</span><span class="author vcard"><a class="url fn n" href="%2$s">%3$s</a></span></div>',
 			esc_html__('Posted by', '_bless'),
 			esc_url(get_author_posts_url(get_the_author_meta('ID'))),
 			esc_html(get_the_author())
@@ -76,21 +78,12 @@ if (!function_exists('_bless_entry_meta')):
 		if ('post' === get_post_type()) {
 
 			// Posted by.
-			//_bless_posted_by();
+			_bless_posted_by();
 
 			// Posted on.
 			_bless_posted_on();
 
-			/* translators: used between list items, there is a space after the comma. */
-			$categories_list = get_the_category_list(__(', ', '_bless'));
-			if ($categories_list) {
-				printf(
-					/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
-					'<span class="sr-only">%1$s</span>%2$s',
-					esc_html__('Posted in', '_bless'),
-					$categories_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				);
-			}
+			_bless_categories();
 
 			/* translators: used between list items, there is a space after the comma. */
 			$tags_list = get_the_tag_list('', __(', ', '_bless'));
@@ -127,6 +120,36 @@ if (!function_exists('_bless_entry_meta')):
 	}
 endif;
 
+if (!function_exists('_bless_categories')):
+
+	function _bless_categories()
+	{
+		/* translators: used between list items, there is a space after the comma. */
+		$categories_list = get_the_category_list(__(', ', '_bless'));
+		if ($categories_list) {
+			printf(
+				//%2$s - removed from sr-only line
+				/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
+				'<div class="publish-category"><span class="sr-only">%1$s</span>',
+				esc_html__('Posted in', '_bless'),
+				$categories_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			);
+		}
+
+		$categories = get_the_category();
+		$separator = ', ';
+		$output = '';
+
+		if ($categories) {
+			foreach ($categories as $category) {
+				$output .= '<a class="text-[14px] flex items-center dark:text-white hover:text-(--no1-red) transition-all duration-300 " href="' . get_category_link($category->term_id) . '">
+						<span class="material-symbols-outlined text-[10px] text-(--no1-red)">bookmark</span>' . $category->name . '</a></div>' . $separator;
+			}
+			echo trim($output, $separator);
+		}
+	}
+endif;
+
 if (!function_exists('_bless_entry_footer')):
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
@@ -138,33 +161,12 @@ if (!function_exists('_bless_entry_footer')):
 		if ('post' === get_post_type()) {
 
 			// Posted by.
-			//_bless_posted_by();
+			_bless_posted_by();
 
 			// Posted on.
-			//_bless_posted_on();
+			_bless_posted_on();
 
-			/* translators: used between list items, there is a space after the comma. */
-			// $categories_list = get_the_category_list(__(', ', '_bless'));
-			// if ($categories_list) {
-			// 	printf(
-			// 		/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
-			// 		'<span class="sr-only">%1$s</span>%2$s',
-			// 		esc_html__('Posted in', '_bless'),
-			// 		$categories_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			// 	);
-			// }
-
-			$categories = get_the_category();
-			$separator = ', ';
-			$output = '';
-
-			if ($categories) {
-				foreach ($categories as $category) {
-					$output .= '<a class="text-[14px] flex items-center dark:text-white hover:text-(--no1-red)  hover:px-3 transition-all duration-300 " href="' . get_category_link($category->term_id) . '">
-							<span class="material-symbols-outlined text-[10px] text-(--no1-red)">bookmark</span>' . $category->name . '</a>' . $separator;
-				}
-				echo trim($output, $separator);
-			}
+			_bless_categories();
 
 			/* translators: used between list items, there is a space after the comma. */
 			$tags_list = get_the_tag_list('', __(', ', '_bless'));
@@ -199,6 +201,14 @@ if (!function_exists('_bless_entry_footer')):
 				),
 				get_the_title()
 			)
+		);
+
+		// Print read more
+		printf(
+			'<div class="publish-link"><a href="%1$s" class="read-more">%2$s<span class="material-symbols-outlined !text-[16px] ml-1">%3$s</span></a></div>',
+			esc_url(get_permalink()),
+			esc_html__('Read More', '_bless'),
+			'arrow_forward'
 		);
 	}
 endif;
@@ -340,22 +350,5 @@ if (!function_exists('_bless_content_class')):
 		// Separates class names with a single space, preparing them for the
 		// post content wrapper.
 		echo 'class="' . esc_attr(implode(' ', $combined_classes)) . '"';
-	}
-endif;
-
-if (!function_exists('_bless_permalink')):
-	/**
-	 * Returns the permalink for the current post.
-	 *
-	 * @return void
-	 */
-	function _bless_permalink()
-	{
-		printf(
-			'<a href="%1$s" class="text-[14px] flex items-center font-medium hover:text-(--no1-green) transition-all duration-300 hover:px-3 dark:text-white">%2$s<span class="material-symbols-outlined !text-[16px] ml-1">%3$s</span></a>',
-			esc_url(get_permalink()),
-			esc_html__('Read More', '_bless'),
-			'arrow_forward'
-		);
 	}
 endif;

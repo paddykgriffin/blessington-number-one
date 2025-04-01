@@ -1,12 +1,12 @@
-<section id="hero" class="h-[85dvh] md:h-[55dvh] lg:h-[85dvh] grid relative">
-    <div class="container text-center grid col-start-1 row-start-1 items-end z-20">
+<section id="hero" class="h-[90dvh] md:h-[55dvh] xl:h-[90dvh] grid relative">
+    <div class="container text-center grid col-start-1 row-start-1 items-end z-20 px-8 lg:px-0">
         <h2 class="text-4xl lg:text-6xl xl:text-7xl 2xl:text-8xl text-white dark:text-white font-mono font-bold drop-shadow-xl"><?php the_field('hero_title', 'option'); ?></h2>
         <?php if (have_rows('boxes', 'option')): ?>
             <div class="grid text-center  items-center justify-center flex-col md:flex-none md:grid-flow-col gap-6">
                 <?php while (have_rows('buttons', 'option')):
                     the_row(); ?>
                     <?php
-                    $colors = ['bg-secondary text-white hover:bg-primary  dark:bg-(--no1-blue) hover:dark:bg-[#1E6993]', 'bg-white text-primary dark:text-(--no1-blue) hover:bg-secondary dark:hover:bg-(--no1-blue)  hover:text-white '];
+                    $colors = ['bg-secondary text-white hover:bg-primary ', 'bg-white text-primary hover:bg-secondary   hover:text-white '];
                     static $post_index = 0; // Keep track of the post index
                     $color_class = $colors[$post_index % count($colors)];
                     $post_index++;

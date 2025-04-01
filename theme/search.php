@@ -10,8 +10,8 @@
 
 get_header();
 ?>
-
-<section id="search-results" class="posts py-8 lg:py-16">
+<?php custom_breadcrumbs(); ?>
+<section id="search-results" class="page-centered posts py-8 lg:py-16">
 	<div class="container mx-auto px-4 py-8">
 
 		<?php if (have_posts()) : ?>
@@ -26,29 +26,41 @@ get_header();
 				);
 				?>
 			</header><!-- .page-header -->
-			<div class="max-w-4xl">
-			<?php
-			// Start the Loop.
-			while (have_posts()) :
-				the_post();
-				get_template_part('template-parts/content/content', 'excerpt');
 
-			// End the loop.
-			endwhile;
+			<div class="max-w-[60rem] mx-auto">
+				<?php
+				// Start the Loop.
+				while (have_posts()) :
+					the_post();
 
-			// Previous/next page navigation.
-			_bless_the_posts_navigation();
+					// Check if the post type is 'post'
+					if (get_post_type() === 'post') { ?>
+						<div class="col-span-5">
+							<?php get_template_part('template-parts/content/content', 'excerpt'); ?>
+						</div>
+					<?php } else { ?>
+						<div class="">
+							<?php get_template_part('template-parts/content/content', 'pages'); ?>
+						</div>
+				<?php }
 
-		else :
+				// End the loop.
+				endwhile;
+
+				// Previous/next page navigation.
+				_bless_the_posts_navigation();
+				?>
+
+			</div>
+		<?php else :
 
 			// If no content is found, get the `content-none` template part.
 			get_template_part('template-parts/content/content', 'none');
 
-		endif;
-			?>
-			</div>
+		endif; ?>
+
 	</div><!-- #main -->
-</section><!-- #primary -->
+</section><!-- #primary
 
 <?php
 get_footer();

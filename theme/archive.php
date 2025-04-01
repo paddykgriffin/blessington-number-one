@@ -10,8 +10,10 @@
 
 get_header();
 ?>
+<?php custom_breadcrumbs(); ?>
 <section id="archive-posts" class="posts py-8 lg:py-16">
-	<div class="container mx-auto px-4 py-8">
+
+	<div class="container mx-auto px-8 py-8">
 		<div class="grid grid-cols-12 gap-8">
 			<div class="col-span-8">
 				<?php if (have_posts()) : ?>
@@ -24,6 +26,7 @@ get_header();
 					// Start the Loop.
 					while (have_posts()) :
 						the_post();
+
 						get_template_part('template-parts/content/content', 'excerpt');
 
 					// End the loop.
@@ -46,9 +49,7 @@ get_header();
 				</aside>
 			<?php endif; ?>
 		</div>
-
-
-		</main><!-- #main -->
+	</div><!-- #main -->
 </section><!-- #primary -->
 
 <?php

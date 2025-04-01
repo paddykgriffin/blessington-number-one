@@ -15,11 +15,15 @@
 
 get_header();
 ?>
-
+<?php custom_breadcrumbs(); ?>
 <section id="posts" class="posts py-8 lg:py-16">
-	<div class="container mx-auto px-4 py-8">
-		<div class="grid grid-cols-12 gap-8">
-			<div class="col-span-8">
+
+	<div class="container mx-auto px-8 py-8">
+		<div class="grid md:grid-cols-12 gap-8">
+			<div class="md:col-span-7 xl:col-span-8 show-search">
+
+
+
 				<?php
 				if (have_posts()) {
 
@@ -28,6 +32,9 @@ get_header();
 						<header class="entry-header pb-8">
 							<h1 class="entry-title"><?php single_post_title(); ?></h1>
 						</header><!-- .entry-header -->
+
+
+						<?php echo get_search_form(); ?>
 				<?php
 					endif;
 
@@ -48,18 +55,16 @@ get_header();
 
 
 
+
+
 			</div>
-
-
-
 			<?php if (is_active_sidebar('news-sidebar')) : ?>
-				<aside class="col-start-10 col-span-3 pt-8" role="complementary" aria-label="<?php esc_attr_e('Footer', '_tw'); ?>">
+				<aside class="md:col-start-10 md:col-span-4 xl:col-span-3 pt-8" role="complementary" aria-label="<?php esc_attr_e('Footer', '_tw'); ?>">
 					<?php echo get_search_form(); ?>
 					<?php dynamic_sidebar('news-sidebar'); ?>
 				</aside>
 			<?php endif; ?>
 		</div>
-
 	</div><!-- #main -->
 </section><!-- #primary -->
 

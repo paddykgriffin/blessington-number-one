@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying pages
  *
@@ -34,6 +35,8 @@
 			)
 		);
 		?>
+
+
 	</div><!-- .entry-content sample -->
 
 	<?php if (get_edit_post_link()): ?>

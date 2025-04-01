@@ -8,10 +8,10 @@
 
 get_header();
 ?>
+<?php custom_breadcrumbs(); ?>
+<div id="page" class="contact-page page-centered py-8 lg:py-16">
 
-<div id="page" class="contact-page py-8 lg:py-16">
-
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mx-auto px-8 py-8">
 
 
         <div class="max-w-content mx-auto text-center">
@@ -32,7 +32,7 @@ get_header();
             endwhile; // End of the loop.
             ?>
 
-            <div class="bg-(--no1-light-grey) grid grid-cols-2 items-start p-8 dark:bg-stone-800 md:mt-12">
+            <div class="bg-(--no1-light-grey) grid md:grid-cols-2 items-start p-4 md:p-8 dark:bg-stone-800 md:mt-12">
                 <?php if (is_active_sidebar('sidebar-contact')) : ?>
                     <aside class="" role="complementary" aria-label="<?php esc_attr_e('Footer', '_tw'); ?>">
                         <?php dynamic_sidebar('sidebar-contact'); ?>

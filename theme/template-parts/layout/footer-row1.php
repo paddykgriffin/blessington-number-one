@@ -3,7 +3,7 @@
 
         <div class="md:col-span-5 lg:col-span-4 xl:col-span-3 order-1 ">
             <h3 class="text-tertiary text-[24px] font-semibold pb-4">Quick links</h3>
-            <div class="grid md:grid-cols-2 lg:gap-4 pb-8 lg:pb-0">
+            <div class="grid grid-cols-2 lg:gap-4 pb-8 lg:pb-0">
                 <?php if (has_nav_menu('menu-2')): ?>
                     <nav aria-label="<?php esc_attr_e('Footer Col 1 Menu', '_bless'); ?>" class="text-white">
                         <?php

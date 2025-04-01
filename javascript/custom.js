@@ -57,3 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (closeBtn) closeBtn.addEventListener("click", openNav);
     if (overlay) overlay.addEventListener("click", openNav);
 });
+
+// Apply Padding to Main
+document.addEventListener("DOMContentLoaded", () => {
+    const header = document.getElementById('masthead');
+    const siteMain = document.getElementById('main');
+
+    if (header && siteMain) {
+        siteMain.style.marginTop = `${header.offsetHeight}px`
+    }
+
+});

@@ -10,24 +10,24 @@
 
 ?>
 
-<header id="masthead" class="bg-primary dark:bg-stone-900 border-b-4 border-secondary dark:border-stone-800 py-3">
+<header id="masthead" class="bg-primary dark:bg-stone-900 border-b-4 border-secondary dark:border-stone-800 py-3 fixed z-[40] w-full top-0">
 
 	<div class="container px-4 xl:px-0">
 		<div class="grid grid-cols-2 lg:grid-cols-12 items-center md:gap-6 ">
 			<?php
 			if (is_front_page()):
 			?>
-				<div class="md:col-span-1 lg:col-span-2 xl:col-span-1">
-					<a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
+				<div class="lg:col-span-2 xl:col-span-2 2xl:col-span-1">
+					<a href="<?php echo esc_url(home_url('/')); ?>" rel="home" class="hover:opacity-50 transition-all duration-300">
 						<img src="<?php bloginfo('template_directory'); ?>/img/logo.png" alt="<?php bloginfo('name'); ?>" class="w-16 md:w-24" />
 					</a>
 				</div>
 			<?php
 			else:
 			?>
-				<div class="md:col-span-2 xl:col-span-1">
-					<a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
-						<img src="<?php bloginfo('template_directory'); ?>/img/logo.png" alt="<?php bloginfo('name'); ?>" class="w-30" />
+				<div class="lg:col-span-2 xl:col-span-2 2xl:col-span-1">
+					<a href="<?php echo esc_url(home_url('/')); ?>" rel="home" class="hover:opacity-50 transition-all duration-300">
+						<img src="<?php bloginfo('template_directory'); ?>/img/logo.png" alt="<?php bloginfo('name'); ?>" class="w-16 md:w-24" />
 					</a>
 				</div>
 			<?php
@@ -58,7 +58,7 @@
 					?>
 				</nav><!-- #site-navigation -->
 			</div>
-			<div class="md:col-span-1 lg:col-span-2">
+			<div class="lg:col-span-2 xl:col-span-2">
 				<div class="flex justify-end gap-2 items-center">
 					<?php get_template_part('template-parts/layout/header', 'icons'); ?>
 

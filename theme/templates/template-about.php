@@ -8,13 +8,15 @@
 
 get_header();
 ?>
-
+<?php custom_breadcrumbs(); ?>
 <div id="page" class="content-page py-8 lg:py-16">
 
-    <div class="container mx-auto px-4 py-8">
 
-        <div class="grid">
-            <div class="col-span-8">
+
+    <div class="container mx-auto px-8 py-8">
+
+        <div class="grid md:grid-cols-12 md:gap-16 lg:gap-0">
+            <div class="md:col-span-8">
                 <?php
                 /* Start the Loop */
                 while (have_posts()) :
@@ -42,7 +44,7 @@ get_header();
                             if ($link): ?>
                                 <li class="py-2">
                                     <a href="<?php echo esc_url($link); ?>"
-                                        class="<?php echo esc_attr($color_class); ?> text-primary dark:text-(--no1-yellow) hover:text-(--no1-green) transition-all duration-300" target="_blank">
+                                        class="<?php echo esc_attr($color_class); ?> text-primary dark:text-primary hover:text-(--no1-green) dark:hover:text-(--no1-yellow) transition-all duration-300" target="_blank">
 
                                         <?php the_sub_field('policy_name'); ?>
 
@@ -76,7 +78,7 @@ get_header();
             </div>
 
             <?php if (is_active_sidebar('sidebar-about')) : ?>
-                <aside class="col-start-10 col-span-3 pt-8" role="complementary" aria-label="<?php esc_attr_e('Footer', '_tw'); ?>">
+                <aside class="md:col-start-10 md:col-span-3 pt-8" role="complementary" aria-label="<?php esc_attr_e('Footer', '_tw'); ?>">
                     <?php dynamic_sidebar('sidebar-about'); ?>
                 </aside>
             <?php endif; ?>

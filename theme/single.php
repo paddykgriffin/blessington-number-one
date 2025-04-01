@@ -10,8 +10,9 @@
 
 get_header();
 ?>
+<?php custom_breadcrumbs(); ?>
+<section id="single" class="single-page-wrapper py-8 lg:py-16">
 
-<section id="single" class="single-page posts py-8 lg:py-16">
 	<div class="container mx-auto px-4 py-8">
 		<div class="max-w-[46rem] mx-auto text-center">
 			<?php

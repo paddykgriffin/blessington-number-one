@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-
+<?php custom_breadcrumbs(); ?>
 <div id="page" class="content-page py-8 lg:py-16">
 
 	<div class="container mx-auto px-4 py-8">
