@@ -11,7 +11,6 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
 	<header class="entry-header">
 		<?php
 		if (!is_front_page()) {
@@ -21,9 +20,6 @@
 		}
 		?>
 	</header><!-- .entry-header -->
-
-
-
 	<div <?php _bless_content_class('entry-content'); ?>>
 		<?php
 		the_content();
@@ -35,30 +31,6 @@
 			)
 		);
 		?>
-
-
-
-	</div><!-- .entry-content sample -->
-
-	<?php if (get_edit_post_link()): ?>
-		<footer class="entry-footer">
-			<?php
-			edit_post_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: Name of current post. Only visible to screen readers. */
-						__('Edit <span class="sr-only">%s</span>', '_bless'),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					get_the_title()
-				)
-			);
-			?>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
-
+	</div>
+	<!-- .entry-content sample -->
 </article><!-- #post-<?php the_ID(); ?> -->

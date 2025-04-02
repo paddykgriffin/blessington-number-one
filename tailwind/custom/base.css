@@ -33,7 +33,7 @@ h5 {
 }
 
 .primary-link {
-	@apply text-white border-b-1 border-secondary dark:border-stone-800 lg:border-b-0 px-6 lg:px-0 py-4 lg:py-0 block cursor-pointer hover:text-tertiary transition-all duration-300 font-medium text-lg aria-[current=page]:text-tertiary hover:bg-secondary lg:hover:bg-transparent
+	@apply text-white border-b-1 border-secondary dark:border-stone-800 lg:border-b-0 px-6 lg:px-0 py-4 lg:py-0 block cursor-pointer hover:text-tertiary transition-all duration-300 font-medium text-lg aria-[current=page]:text-tertiary hover:bg-secondary lg:hover:bg-transparent 
 }
 
 .btn {
@@ -41,7 +41,7 @@ h5 {
 }
 
 .read-more {
-	@apply text-[14px] flex items-center font-medium hover:text-(--no1-green) dark:hover:text-primary transition-all duration-300 hover:px-3 dark:text-white
+	@apply text-[14px] flex items-center font-medium hover:text-(--no1-green)  transition-all duration-300 hover:px-3 dark:text-white
 }
 
 .fixed-padding {

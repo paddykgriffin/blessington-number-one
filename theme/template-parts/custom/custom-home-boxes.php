@@ -1,4 +1,4 @@
-<section id="boxes" class="bg-primary dark:bg-stone-800 py-14 ">
+<section id="boxes" class="bg-primary dark:bg-stone-900 py-14 ">
     <div class="container px-8 xl:px-0">
         <?php if (have_rows('boxes', 'option')): ?>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-3 xl:gap-22">

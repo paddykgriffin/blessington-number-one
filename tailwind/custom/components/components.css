@@ -109,7 +109,7 @@
 }
 
 .posts .wp-block-categories-list li  a {
-	@apply flex hover:text-(--no1-green) transition-all duration-300 dark:hover:text-(--no1-yellow) hover:pl-3  before:w-[12px] before:h-[24px] before:block before:mr-2 before:content-['>'] before:font-semibold before:text-(--no1-red)
+	@apply flex hover:text-(--no1-green) transition-all duration-300 dark:hover:text-(--no1-yellow) hover:pl-3  before:w-[12px] before:h-[24px] before:block before:mr-2 before:content-['>'] before:font-semibold before:text-(--no1-red) dark:before:text-(--no1-yellow)
 }
 
 .posts .wp-block-archives-list li  a {
@@ -173,28 +173,38 @@
 	@apply py-2 flex 
 }
 .content-page aside .menu li a {
-	@apply flex hover:text-(--no1-green) transition-all duration-300 dark:hover:text-(--no1-yellow) hover:pl-3  before:w-[12px] before:h-[24px] before:block before:mr-2 before:content-['>'] before:font-semibold before:text-(--no1-red)
+	@apply flex hover:text-(--no1-red) transition-all duration-300 dark:hover:text-(--no1-yellow) hover:pl-3  before:w-[12px] before:h-[24px] before:block before:mr-2 before:content-['>'] before:font-semibold before:text-(--no1-red) dark:before:text-(--no1-yellow)
 }
 
 
 
 
 /* Contact Page Form */
-.contact-page .wpcf7 {
-	@apply rounded-2xl lg:max-w-[30rem] mx-auto xl:bg-transparent 
+.contact-page .entry-title {
+	@apply md:text-center md:after:left-[50%] md:after:translate-x-[-50%] 
 }
 .contact-page .get-in-touch {
-	@apply bg-primary rounded-2xl p-6 text-left  dark:bg-stone-900 md:mb-12  mb-8 md:max-w-[24rem]
+	@apply bg-primary rounded-2xl p-6 text-left  dark:bg-stone-900 md:mb-12 
 }
 
-.contact-page .get-in-touch h3{
-	@apply dark:text-primary
+.contact-page h3 {
+	@apply dark:text-primary md:text-3xl font-semibold text-secondary pb-4
+}
+.contact-page .get-in-touch h3 {
+	@apply text-(--no1-yellow) dark:text-primary
+}
+.contact-page .get-in-touch .material-symbols-outlined {
+	@apply dark:text-secondary
 }
 
-.contact-page h4 {
-	@apply text-4xl text-secondary font-semibold pb-4
+.contact-page .entry-content > * {
+	@apply max-w-full
 }
 
+
+/* .wpcf7 {
+	@apply rounded-2xl 
+} */
 .wpcf7-form label {
 	@apply block font-semibold text-lg lg:text-xl text-left  py-3 italic text-stone-600 dark:text-white
 }

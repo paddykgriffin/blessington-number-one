@@ -10,14 +10,14 @@
 
 ?>
 <div class="pb-8 md:pb-0 md:pl-8 lg:pl-0 get-in-touch">
-    <h3 class="text-tertiary text-[24px] font-semibold pb-4">Get in touch</h3>
+    <h3 class="text-tertiary text-[24px] font-semibold pb-4 dark:text-primary">Get in touch</h3>
     <div class="flex  font-light pb-3">
-        <span class="material-symbols-outlined pr-4 text-tertiary">location_on</span>
+        <span class="material-symbols-outlined pr-4 text-tertiary dark:text-white">location_on</span>
         <p class="!leading-[1.25] md:!leading-[1]"><?php the_field('contact_address', 'option'); ?></p>
     </div>
 
     <div class="flex font-light pb-3">
-        <span class="material-symbols-outlined  pr-4  text-tertiary">call</span>
+        <span class="material-symbols-outlined  pr-4  text-tertiary dark:text-white">call</span>
         <p>
 
 
@@ -31,14 +31,14 @@
     </div>
 
     <div class="flex font-light pb-3">
-        <span class="material-symbols-outlined  pr-4  text-tertiary">mail</span>
+        <span class="material-symbols-outlined  pr-4  text-tertiary dark:text-white">mail</span>
         <a href="mailto: <?php the_field('contact_email', 'option'); ?>"
             class="hover:text-tertiary transition-all duration-300">
             <?php the_field('contact_email', 'option'); ?></a>
     </div>
 
     <div class="flex font-light">
-        <span class="material-symbols-outlined pr-4  text-tertiary">&#xe8b5;</span>
+        <span class="material-symbols-outlined pr-4  text-tertiary dark:text-white">&#xe8b5;</span>
         <p> <?php the_field('contact_working_hours', 'option'); ?></p>
     </div>
 </div>

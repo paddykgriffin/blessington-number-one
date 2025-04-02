@@ -1,7 +1,7 @@
 <section id="latest-posts" class="posts py-22">
     <div class="container px-8 xl:px-0 ">
         <h2 class="entry-title">Latest posts</h2>
-        <div class="grid md:grid-cols-1  lg:grid-cols-3 gap-8 md:gap-8 xl:gap-16 pt-8 max-w-[25rem] lg:max-w-full mx-auto">
+        <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 md:gap-8 xl:gap-16 pt-8 max-w-[25rem] lg:max-w-full mx-auto">
             <?php
             // the query
             $the_query = new WP_Query(array(
@@ -35,10 +35,7 @@
 
                             <p class="py-3  dark:text-white"><?php echo get_the_excerpt(); ?></p>
                             <div class="flex justify-between lg:items-center md:flex-col lg:flex-row lg:justify-between md:gap-4 pt-6">
-
                                 <?php _bless_entry_footer(); ?>
-
-
                             </div>
                         </div>
                     </article>

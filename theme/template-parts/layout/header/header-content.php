@@ -10,7 +10,7 @@
 
 ?>
 
-<header id="masthead" class="bg-primary dark:bg-stone-900 border-b-4 border-secondary dark:border-stone-800 py-3 fixed z-[40] w-full top-0">
+<header id="masthead" class="bg-primary  border-b-4 border-secondary  py-3 fixed z-[40] w-full top-0">
 
 	<div class="container px-4 xl:px-0">
 		<div class="grid grid-cols-2 lg:grid-cols-12 items-center md:gap-6 ">

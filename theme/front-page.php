@@ -36,9 +36,9 @@ get_header();
     endwhile; // End of the loop.
     ?>
 
-    <?php get_template_part('template-parts/custom/custom', 'homepage-boxes'); ?>
+    <?php get_template_part('template-parts/custom/custom', 'home-boxes'); ?>
     <?php get_template_part('template-parts/custom/custom', 'admissions'); ?>
-    <?php get_template_part('template-parts/custom/custom', 'homepage-posts'); ?>
+    <?php get_template_part('template-parts/custom/custom', 'home-posts'); ?>
 
 
 </section>

@@ -414,7 +414,7 @@ add_filter('get_search_form', 'custom_search_form');
 function custom_breadcrumbs()
 {
 	$separator = ' <span class="px-3 material-symbols-outlined text-stone-700 dark:text-white">chevron_right</span> ';
-	echo '<nav class="breadcrumbs bg-gray-100 dark:bg-stone-600 py-2 "><div class="container flex items-center px-4 ">';
+	echo '<nav class="breadcrumbs bg-gray-100 dark:bg-stone-900 py-2 "><div class="container flex items-center px-4 ">';
 
 	if (!is_home() && !is_front_page()) {
 		echo '<a href="' . home_url() . '">Home</a>' . $separator;
