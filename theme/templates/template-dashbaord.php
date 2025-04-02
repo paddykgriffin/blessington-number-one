@@ -16,7 +16,7 @@ get_header('dashboard');
     while (have_posts()) :
         the_post();
 
-        get_template_part('template-parts/content/content', 'dashboard');
+        get_template_part('template-parts/dashboard/content', 'dashboard');
 
 
         // If comments are open, or we have at least one comment, load
