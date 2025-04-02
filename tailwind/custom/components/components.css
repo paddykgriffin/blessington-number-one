@@ -19,7 +19,7 @@
  */
 .page-title,
 .entry-title {
-	@apply relative mx-auto mb-12 pb-12 text-4xl xl:text-6xl font-medium text-neutral-900 after:h-0.5 after:bg-[#D9D9D9] dark:after:bg-primary after:block after:mt-2 after:w-24 after:absolute after:bottom-0 after:left-[50%] md:after:left-0 after:translate-x-[-50%] md:after:translate-x-0 text-center md:text-left dark:text-white;
+	@apply relative mx-auto mb-12 pb-12 text-5xl xl:text-6xl font-medium text-neutral-900 after:h-0.5 after:bg-[#D9D9D9] dark:after:bg-primary after:block after:mt-2 after:w-24 after:absolute after:bottom-0 after:left-[50%] md:after:left-0 after:translate-x-[-50%] md:after:translate-x-0 text-center md:text-left dark:text-white;
 }
 
 /**
@@ -167,7 +167,7 @@
 	@apply min-h-[60dvh]
 }
 .content-page aside .menu {
-	@apply bg-(--no1-light-grey) px-6 py-8 rounded-xl dark:bg-stone-900
+	@apply bg-gray-100 px-6 py-8 rounded-xl dark:bg-stone-900
 }
 .content-page aside .menu li {
 	@apply py-2 flex 
@@ -178,23 +178,25 @@
 
 
 
-/* Contact Page Form */
 
+/* Contact Page Form */
+.contact-page .wpcf7 {
+	@apply rounded-2xl lg:max-w-[30rem] mx-auto xl:bg-transparent 
+}
 .contact-page .get-in-touch {
-	@apply bg-primary rounded-2xl p-4 max-w-[260px] md:max-w-[330px] text-left mx-auto dark:bg-stone-900 mt-12 
+	@apply bg-primary rounded-2xl p-6 text-left  dark:bg-stone-900 md:mb-12  mb-8 md:max-w-[24rem]
 }
 
 .contact-page .get-in-touch h3{
-	@apply text-center dark:text-primary
+	@apply dark:text-primary
 }
 
-
-.wpcf7-form {
-	@apply !pb-12 max-w-[260px] lg:max-w-[90%]
+.contact-page h4 {
+	@apply text-4xl text-secondary font-semibold pb-4
 }
 
 .wpcf7-form label {
-	@apply block font-semibold text-sm lg:text-xl text-left  py-3 italic text-secondary dark:text-white
+	@apply block font-semibold text-lg lg:text-xl text-left  py-3 italic text-stone-600 dark:text-white
 }
 
 .wpcf7-form br {
@@ -218,7 +220,7 @@
 }
 
 .wpcf7-form input[type='submit'] {
-	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 px-16 py-2 block mt-6
+	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 md:px-16 py-2 block mt-6 w-full md:w-[260px] mx-auto
 }
 
 
@@ -280,9 +282,14 @@
 
 /* Page Centered */
 .page-centered h1 {
-	@apply !text-center after:!left-[50%] after:!translate-x-[-50%] md:after:!translate-x-[-50%]
+	@apply !text-center after:!left-[50%] after:!translate-x-[-50%] md:after:!translate-x-[-50%] 
 }
 
 .page-centered .search-form {
 	@apply  max-w-[30rem] mx-auto mt-12
+}
+
+
+.dashboard #hu-revoke {
+	@apply !hidden
 }

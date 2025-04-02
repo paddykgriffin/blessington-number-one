@@ -60,7 +60,7 @@
 			</div>
 			<div class="lg:col-span-2 xl:col-span-2">
 				<div class="flex justify-end gap-2 items-center">
-					<?php get_template_part('template-parts/layout/header', 'icons'); ?>
+					<?php get_template_part('template-parts/layout/header/header', 'icons'); ?>
 
 				</div>
 			</div>

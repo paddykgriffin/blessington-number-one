@@ -25,11 +25,9 @@
         // );
         ?>
 
-
-
-        <a href="<?php the_field('site_credit_link', 'option'); ?>"
+        <a href="https://paddygriffin.com"
             class="font-light text-sm hover:text-tertiary transition-all duration-300 text-center md:text-left" target="_blank">
-            <?php the_field('site_credit_label', 'option'); ?>
+            Site designed and developed by Paddy Griffin
         </a>
 
     </div>

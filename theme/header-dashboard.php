@@ -25,7 +25,7 @@
 
 </head>
 
-<body <?php body_class('bg-white text-black dark:bg-stone-950 dark:text-white font-display'); ?>>
+<body <?php body_class('bg-white text-black dark:bg-stone-950 dark:text-white font-display dashboard'); ?>>
 
     <?php wp_body_open(); ?>
 

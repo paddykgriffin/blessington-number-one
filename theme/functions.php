@@ -136,6 +136,19 @@ function _bless_widgets_init()
 {
 	register_sidebar(
 		array(
+			'name' => __('Main Sidebar', '_bless'),
+			'id' => 'sidebar',
+			'description' => __('Here you can add widgets to the main sidebar.', '_bless'),
+			'before_widget' => '<div id="%1$s" class="widget %2$s mb-8">',
+			'after_widget' => '</div>',
+			'before_title' => '<h2 class="widget-title">',
+			'after_title' => '</h2>',
+		)
+	);
+
+
+	register_sidebar(
+		array(
 			'name' => __('News Sidebar', '_bless'),
 			'id' => 'news-sidebar',
 			'description' => __('Add widgets here on the latest news page.', '_bless'),
@@ -400,8 +413,8 @@ add_filter('get_search_form', 'custom_search_form');
 
 function custom_breadcrumbs()
 {
-	$separator = ' <span class="px-3 material-symbols-outlined text-stone-700">chevron_right</span> ';
-	echo '<nav class="breadcrumbs bg-(--no1-light-grey) py-2 "><div class="container flex items-center px-4">';
+	$separator = ' <span class="px-3 material-symbols-outlined text-stone-700 dark:text-white">chevron_right</span> ';
+	echo '<nav class="breadcrumbs bg-gray-100 dark:bg-stone-600 py-2 "><div class="container flex items-center px-4 ">';
 
 	if (!is_home() && !is_front_page()) {
 		echo '<a href="' . home_url() . '">Home</a>' . $separator;

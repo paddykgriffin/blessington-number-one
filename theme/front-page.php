@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-<?php get_template_part('template-parts/hero/hero'); ?>
+<?php get_template_part('template-parts/custom/custom', 'hero'); ?>
 <!-- #hero -->
 
 
@@ -35,9 +35,12 @@ get_header();
 
     endwhile; // End of the loop.
     ?>
-    <?php get_template_part('template-parts/home/boxes'); ?>
-    <?php get_template_part('template-parts/home/admissions'); ?>
-    <?php get_template_part('template-parts/home/latest-posts'); ?>
+
+    <?php get_template_part('template-parts/custom/custom', 'homepage-boxes'); ?>
+    <?php get_template_part('template-parts/custom/custom', 'admissions'); ?>
+    <?php get_template_part('template-parts/custom/custom', 'homepage-posts'); ?>
+
+
 </section>
 <!-- #front-page -->
 

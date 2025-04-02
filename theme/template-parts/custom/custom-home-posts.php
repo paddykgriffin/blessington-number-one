@@ -51,9 +51,16 @@
 
         </div>
         <div class="pt-16 text-center lg:text-left max-w-[25rem] lg:max-w-full mx-auto ">
-            <a href="latest-news" class="btn">Read
+            <a href="<?php
+                        $news_page = get_page_by_path('latest-news');
+                        if ($news_page) {
+                            echo get_permalink($news_page->ID);
+                        }
+                        ?>" class="btn">Read
                 all
                 news</a>
+
+
         </div>
     </div>
 </section>

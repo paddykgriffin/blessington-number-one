@@ -38,7 +38,7 @@
         </div>
 
         <div class="md:col-span-5 lg:col-span-4 xl:col-span-3 order-2 md:order-3">
-            <?php get_template_part('template-parts/layout/footer', 'touch'); ?>
+            <?php get_template_part('template-parts/layout/footer/footer', 'touch'); ?>
         </div>
     </div>
 </div>

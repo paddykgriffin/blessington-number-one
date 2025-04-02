@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying the footer content
  *
@@ -10,6 +11,6 @@
 ?>
 
 <footer id="footer">
-	<?php get_template_part('template-parts/layout/footer', 'row1'); ?>
-	<?php get_template_part('template-parts/layout/footer', 'row2'); ?>
+	<?php get_template_part('template-parts/layout/footer/footer', 'row1'); ?>
+	<?php get_template_part('template-parts/layout/footer/footer', 'row2'); ?>
 </footer><!-- #footer -->

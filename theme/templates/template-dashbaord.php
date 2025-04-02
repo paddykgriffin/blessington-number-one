@@ -9,7 +9,7 @@
 get_header('dashboard');
 ?>
 
-<div id="page" class="p-8">
+<div id="page" class="p-8 min-h-[400px]">
 
     <?php
     /* Start the Loop */
