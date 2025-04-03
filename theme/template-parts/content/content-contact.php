@@ -31,6 +31,9 @@
 			)
 		);
 		?>
+		<?php
+		/* _bless_post_thumbnail(); */
+		?>
 	</div>
 	<!-- .entry-content sample -->
 </article><!-- #post-<?php the_ID(); ?> -->

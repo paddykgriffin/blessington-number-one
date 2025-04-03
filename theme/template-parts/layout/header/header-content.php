@@ -12,7 +12,7 @@
 
 <header id="masthead" class="bg-primary  border-b-4 border-secondary  py-3 fixed z-[40] w-full top-0">
 
-	<div class="container px-4 xl:px-0">
+	<div class="container">
 		<div class="grid grid-cols-2 lg:grid-cols-12 items-center md:gap-6 ">
 			<?php
 			if (is_front_page()):
@@ -41,7 +41,7 @@
 			<?php endif; ?>
 
 
-			<div class="col-span-8 xl:col-span-9 text-center hidden lg:block">
+			<div class="col-span-8 text-center hidden lg:block">
 				<nav id="site-navigation" aria-label="<?php esc_attr_e('Main Navigation', '_bless'); ?>" class="flex justify-center">
 
 

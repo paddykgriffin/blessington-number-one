@@ -22,6 +22,11 @@
 	@apply relative mx-auto mb-12 pb-12 text-5xl xl:text-6xl font-medium text-neutral-900 after:h-0.5 after:bg-[#D9D9D9] dark:after:bg-primary after:block after:mt-2 after:w-24 after:absolute after:bottom-0 after:left-[50%] md:after:left-0 after:translate-x-[-50%] md:after:translate-x-0 text-center md:text-left dark:text-white;
 }
 
+
+.page-title span {
+	@apply last:text-secondary
+}
+
 /**
  * Layout styles for centered content areas
  *
@@ -59,85 +64,136 @@
 	@apply pb-6
 }
 
+/* Container */
+.container {
+	@apply mx-auto px-4 md:px-8
+}
+
+
+/* Buttons */
+.btn {
+	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary px-12 py-2 inline-block 
+}
+
+.read-more-link {
+	@apply flex items-center hover:text-primary dark:hover:text-tertiary hover:px-3 dark:text-white font-bold text-secondary
+}
+
+/* Header */
+.primary-link {
+	@apply text-white border-b-1 border-secondary dark:border-stone-800 lg:border-b-0 px-6 lg:px-0 py-4 lg:py-0 block cursor-pointer hover:text-tertiary transition-all duration-300 font-medium text-lg aria-[current=page]:text-tertiary hover:bg-secondary lg:hover:bg-transparent 
+}
 
 
 /* Home Page */
+.home-block {
+	@apply text-center md:text-left px-8 xl:px-0
+} 
 .home-block h5 {
-	@apply text-[#3E3B3B] dark:text-white;
+	@apply text-black dark:text-white text-lg
 }
-
 .home-block p {
-		@apply leading-[36px] pb-12;
-	}
-
-.home-block  .wp-block-button {
-	@apply text-center md:text-left mx-auto md:mx-0 border-0 text-(--color-background) bg-(--color-primary) rounded-full;
+	@apply leading-[36px] pb-12;
 }
 
-.home-block  .wp-block-button__link {
-	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 px-12 py-1 inline-block
+
+/* Home Posts */
+.home-posts .post-wrapper {
+	@apply md:flex-col 
 }
+
+
+/* Post - Wrapper on index.php */
+.post-wrapper {
+	@apply flex flex-col md:flex-row border-gray-100 border shadow-lg dark:border-gray-100/25  items-center dark:bg-stone-900 rounded-tl-2xl rounded-tr-2xl
+}
+.post-wrapper .entry-thumbnail img {
+	@apply rounded-tl-2xl rounded-tr-2xl
+}
+
+.posts-content .post-wrapper {
+	@apply md:rounded-tr-none md:rounded-bl-2xl
+}
+
+
 
 
 /* Search Box */
 .search-form {
-	@apply border-[1px] border-solid border-[#D9D9D9] dark:border-gray-100/25 rounded-full bg-transparent text-black mb-16 md:mb-24 flex items-center
+	@apply border-[1px] border-solid border-[#D9D9D9] dark:border-gray-100/20 rounded-full bg-transparent text-black mb-16 md:mb-24 flex items-center justify-between px-6
 }
-
 .search-form input {
-	@apply border-0 outline-none px-4 py-3 rounded-full bg-transparent text-black w-[90%] dark:text-white
+	@apply border-0 outline-none py-3 rounded-full bg-transparent text-black  dark:text-white
 }
-
 .search-form button {
 	@apply block  h-[24px]
 }
 
 
-
-
-/* Posts Page */
-.posts .widget_block {
-	@apply bg-(--no1-light-grey) px-6 py-4 pb-8 rounded-xl dark:bg-stone-900
+/* Posts - Search Form */
+.posts-content .search-form {
+	@apply md:hidden
 }
-
-.posts .widget-title {
-	@apply text-primary pb-2 dark:text-primary text-2xl font-semibold mb-4
-}
-
-.posts .wp-block-categories-list li {
-	@apply py-2 flex 
-}
-
-.posts .wp-block-categories-list li  a {
-	@apply flex hover:text-(--no1-green) transition-all duration-300 dark:hover:text-(--no1-yellow) hover:pl-3  before:w-[12px] before:h-[24px] before:block before:mr-2 before:content-['>'] before:font-semibold before:text-(--no1-red) dark:before:text-(--no1-yellow)
-}
-
-.posts .wp-block-archives-list li  a {
-	@apply hover:pl-3 transition-all  duration-300 hover:text-(--no1-green) dark:hover:text-(--no1-yellow)
-}
-
-.posts .news-title {
-	@apply text-[28px] text-secondary font-semibold md:leading-8 pb-3 dark:text-primary
-}
-
-.posts .publish-date {
-	@apply hidden
-}
-.posts .publish-author {
-	@apply hidden
-}
-
-.posts .search-form {
+.posts-sidebar .search-form {
 	@apply hidden md:flex
 }
 
-.posts .search-form input {
-	@apply w-[80%] sm:w-[90%]  xl:w-[90%]
+
+
+/* Post - Header */
+.post-title {
+	@apply text-2xl text-secondary font-semibold md:leading-8 dark:text-primary mb-0 hover:text-primary dark:hover:text-tertiary hover:pl-3
 }
 
-.posts .show-search .search-form {
-	@apply flex md:hidden
+
+/* Post - Meta */
+.entry-meta {
+	@apply flex justify-between
 }
+.entry-meta .date {
+	@apply hidden
+}
+.entry-meta .category-link, .entry-meta .tag-link, .entry-meta .author-link {
+	@apply flex items-center dark:text-white uppercase font-bold text-[10px]
+}
+.entry-meta .category .category-link  {
+	@apply hover:text-(--no1-red)
+}	
+.entry-meta .tag .tag-link  {
+	@apply hover:text-(--no1-green) 
+}
+.entry-meta .author .author-link {
+	@apply hover:text-(--no1-blue)
+}	
+
+
+/* Post - Footer */
+.entry-footer {
+	@apply flex justify-between lg:items-center md:flex-col lg:flex-row lg:justify-between md:gap-4
+}
+.entry-footer .date, .entry-footer .author, .entry-footer .category, .entry-footer .tag {
+	@apply hidden
+}
+
+
+/* Posts - Sidebar */
+
+.posts-sidebar h2 {
+	@apply text-primary pb-2 dark:text-primary text-2xl font-semibold mb-4
+}
+
+.posts-sidebar li {
+	@apply py-2 flex 
+}
+
+.posts-sidebar li a {
+	@apply flex hover:text-(--no1-red) dark:hover:text-(--no1-yellow) hover:pl-3 transition-all duration-300
+}
+
+.posts-sidebar .wp-block-categories-list a {
+	@apply transition-all duration-300 before:w-[12px] before:h-[24px] before:block before:mr-2 before:content-['>'] before:font-semibold before:text-(--no1-red) dark:before:text-(--no1-yellow)
+}
+
 
 
 /* Posts Pagination Nav Links */
@@ -166,71 +222,74 @@
 .content-page {
 	@apply min-h-[60dvh]
 }
-.content-page aside .menu {
-	@apply bg-gray-100 px-6 py-8 rounded-xl dark:bg-stone-900
-}
 .content-page aside .menu li {
 	@apply py-2 flex 
 }
 .content-page aside .menu li a {
-	@apply flex hover:text-(--no1-red) transition-all duration-300 dark:hover:text-(--no1-yellow) hover:pl-3  before:w-[12px] before:h-[24px] before:block before:mr-2 before:content-['>'] before:font-semibold before:text-(--no1-red) dark:before:text-(--no1-yellow)
+	@apply flex hover:text-(--no1-red) dark:hover:text-(--no1-yellow) hover:pl-3  before:w-[12px] before:h-[24px] before:block before:mr-2 before:content-['>'] before:font-semibold before:text-(--no1-red) dark:before:text-(--no1-yellow) transition-all duration-300
+}
+
+/* Sidebar */
+.content-page .widget {
+	@apply bg-gray-200/50 px-6 py-4 pb-8 rounded-xl dark:bg-stone-900 
+}
+
+.posts-sidebar .widget_block {
+	@apply bg-gray-200/50 px-6 py-4 pb-8 rounded-xl dark:bg-stone-900 
 }
 
 
 
-
-/* Contact Page Form */
+/* Contact Page  */
 .contact-page .entry-title {
 	@apply md:text-center md:after:left-[50%] md:after:translate-x-[-50%] 
 }
-.contact-page .get-in-touch {
-	@apply bg-primary rounded-2xl p-6 text-left  dark:bg-stone-900 md:mb-12 
-}
-
 .contact-page h3 {
-	@apply dark:text-primary md:text-3xl font-semibold text-secondary pb-4
+	@apply text-3xl text-secondary dark:text-primary
 }
-.contact-page .get-in-touch h3 {
-	@apply text-(--no1-yellow) dark:text-primary
-}
-.contact-page .get-in-touch .material-symbols-outlined {
-	@apply dark:text-secondary
-}
-
 .contact-page .entry-content > * {
 	@apply max-w-full
 }
+.contact-featured-img img {
+	@apply aspect-[1]
+}
 
 
-/* .wpcf7 {
-	@apply rounded-2xl 
-} */
+
+/* Contact Page - Get in Touch  */
+.contact-page .get-in-touch {
+	@apply bg-primary text-center dark:bg-stone-900 px-8 py-8 lg:py-0 lg:px-4
+}
+.contact-page .get-in-touch h3 {
+	@apply text-tertiary dark:text-primary lg:m-0 xl:mb-4
+}
+.contact-page  .get-in-touch-items {
+	@apply mx-auto max-w-[19rem] text-left
+}
+
+
+
+/* Contact Form */
 .wpcf7-form label {
 	@apply block font-semibold text-lg lg:text-xl text-left  py-3 italic text-stone-600 dark:text-white
 }
-
 .wpcf7-form br {
 	@apply hidden
 }
-
 .wpcf7-form-control-wrap {
 	@apply block text-left
 }
-
 .wpcf7-form input[type='text'] {
 	@apply border border-gray-300 py-2 bg-background dark:bg-stone-700 dark:border-stone-800 w-[100%]
 }
-
 .wpcf7-form input[type='email'] {
 	@apply border border-gray-300 py-2 bg-background dark:bg-stone-700 dark:border-stone-800  w-[100%]
 }
-
 .wpcf7-form textarea {
 	@apply border border-gray-300 py-2 bg-background dark:bg-stone-700 dark:border-stone-800  w-[100%]
 }
-
 .wpcf7-form input[type='submit'] {
-	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 md:px-16 py-2 block mt-6 w-full md:w-[260px] mx-auto
+	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary md:px-16 py-2 block mt-6 w-full md:w-[260px] mx-auto
 }
 
 
@@ -239,46 +298,36 @@
 .single-post h1 {
 	@apply !text-center after:!left-[50%] after:!translate-x-[-50%] md:after:!translate-x-[-50%]
 }
-
 .single-post .navigation {
 	@apply mt-5
 }
-
 .single-post .nav-links {
 	@apply flex items-center justify-between
 }
-
 .single-post .nav-previous {
-	@apply bg-(--no1-light-grey) px-8 py-2 rounded-full hover:bg-secondary hover:text-white transition-all duration-300  dark:bg-stone-700 hover:dark:bg-[#1E6993]
+	@apply bg-(--no1-light-grey) px-8 py-2 rounded-full hover:bg-secondary hover:text-white  dark:bg-stone-700 hover:dark:bg-[#1E6993]
 }
-
 .single-post .nav-next {
-	@apply bg-primary px-8 py-2 rounded-full text-white hover:bg-secondary transition-all duration-300  dark:bg-(--no1-blue) hover:dark:bg-[#1E6993]
+	@apply bg-primary px-8 py-2 rounded-full text-white hover:bg-secondary dark:bg-(--no1-blue) hover:dark:bg-[#1E6993]
 }
-
 .single-post .nav-previous span {
 	@apply first:font-semibold last:hidden
 }
-
 .single-post .nav-next span {
 	@apply first:font-semibold last:hidden
 }
-
 .single-post .publish-author {
 	@apply hidden
 }
 .single-post .publish-link {
 	@apply hidden
 }
-
 .single-post .entry-footer {
 	@apply hidden
 }
-
 .single-post .publish-date {
 	@apply px-4 border-r-2 border-gray-400
 }
-
 .single-post .publish-category {
 	@apply px-4
 }
@@ -294,12 +343,46 @@
 .page-centered h1 {
 	@apply !text-center after:!left-[50%] after:!translate-x-[-50%] md:after:!translate-x-[-50%] 
 }
-
 .page-centered .search-form {
 	@apply  max-w-[30rem] mx-auto mt-12
 }
 
 
+/* Image Lightbox */
+#baguetteBox-overlay .full-image img {
+	@apply max-w-[80rem]
+}
+
+
+/* Dashboard Page */
 .dashboard #hu-revoke {
 	@apply !hidden
+}
+
+
+/* Footer link */
+.footer-link {
+	@apply py-1 block hover:text-tertiary font-light
+}
+
+
+/* Breadcrumbs */
+.breadcrumbs {
+	@apply bg-gray-100 dark:bg-stone-900 py-2 
+}
+.breadcrumbs-wrap {
+	@apply flex items-center px-4
+}
+
+.breadcrumbs .material-symbols-outlined {
+	@apply !text-xl px-3
+}
+
+
+/* Get in Touch */
+.get-in-touch-line {
+	@apply flex font-light pb-3
+}
+.get-in-touch-icon {
+	@apply pr-4 text-tertiary dark:text-primary
 }

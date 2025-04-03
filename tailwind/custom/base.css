@@ -21,69 +21,35 @@ body {
 }
 
 
-/* Standard Block Styles */
-
-.container {
-	@apply max-w-7xl mx-auto
-}
-
-h5 {
-	@apply font-semibold mb-4;
-
-}
-
-.primary-link {
-	@apply text-white border-b-1 border-secondary dark:border-stone-800 lg:border-b-0 px-6 lg:px-0 py-4 lg:py-0 block cursor-pointer hover:text-tertiary transition-all duration-300 font-medium text-lg aria-[current=page]:text-tertiary hover:bg-secondary lg:hover:bg-transparent 
-}
-
-.btn {
-	@apply bg-primary text-[24px] rounded-full text-white hover:bg-secondary transition-all duration-300 px-12 py-2 inline-block 
-}
-
-.read-more {
-	@apply text-[14px] flex items-center font-medium hover:text-(--no1-green)  transition-all duration-300 hover:px-3 dark:text-white
-}
-
-.fixed-padding {
-	@apply pt-[110px] 
-}
-
 /* Editor Heading Size and Style  */
-.prose :where(h2):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
-	@apply !text-5xl !text-secondary !mt-0 !font-semibold !mb-12 dark:!text-primary
+
+
+/* Headings */
+h2,h3,h4,h5,h6 {
+	@apply text-secondary font-semibold dark:text-primary
 }
-.prose :where(h3):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
-	@apply !text-4xl !text-secondary !font-semibold !mb-8 dark:!text-primary
+h2 {
+	@apply mb-4 text-6xl
 }
-.prose :where(h4):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
-	@apply !text-2xl !text-secondary !font-semibold !mb-6 dark:!text-primary
+h3 {
+	@apply mb-4 text-5xl
+}
+h4 {
+	@apply mb-4 text-4xl
+}
+h5 {
+	@apply mb-4 text-3xl
+}
+h6 {
+	@apply mb-4 text-2xl
 }
 
 
-.prose :where(img):not(:where([class~="not-prose"],[class~="not-prose"] *)){
-	@apply !m-0
+/* Block Editor Overwrite */
+.wp-block-button__link {
+	@apply bg-primary text-[24px] rounded-full hover:bg-secondary transition-all duration-300 px-12 py-1
 }
 
-#baguetteBox-overlay .full-image img {
-	@apply max-w-[80rem]
+.default-transition {
+	@apply transition-all duration-300
 }
-
-
-.parent {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr)!important;
-	grid-template-rows: repeat(3, 1fr)!important;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
-	}
-
-	.parent li {
-		min-height: 300px;
-	}
-	
-	.parent li:nth-child(1) { grid-area: 1 / 1 / 3 / 2; }
-	.parent li:nth-child(2) { grid-area: 1 / 2 / 2 / 4; }
-	.parent li:nth-child(3) { grid-area: 2 / 2 / 3 / 3; }
-	.parent li:nth-child(4) { grid-area: 2 / 3 / 3 / 4; }
-	.parent li:nth-child(5) { grid-area: 3 / 1 / 4 / 3; }
-	.parent li:nth-child(6) { grid-area: 3 / 3 / 4 / 4; }

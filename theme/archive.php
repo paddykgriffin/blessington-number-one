@@ -21,8 +21,8 @@ get_header();
 					<header class="page-header">
 						<?php the_archive_title('<h1 class="page-title">', '</h1>'); ?>
 					</header><!-- .page-header -->
-
-				<?php
+					<div class="posts-wrapper grid gap-8">
+					<?php
 					// Start the Loop.
 					while (have_posts()) :
 						the_post();
@@ -41,10 +41,11 @@ get_header();
 					get_template_part('template-parts/content/content', 'none');
 
 				endif;
-				?>
+					?>
+					</div>
 			</div>
 			<?php if (is_active_sidebar('news-sidebar')) : ?>
-				<aside class="col-start-10 col-span-3 pt-8" role="complementary" aria-label="<?php esc_attr_e('Footer', '_tw'); ?>">
+				<aside class="md:col-start-9 xl:col-start-10 md:col-span-4 xl:col-span-3 pt-8 posts-sidebar" role="complementary" aria-label="<?php esc_attr_e('Footer', '_tw'); ?>">
 					<?php dynamic_sidebar('news-sidebar'); ?>
 				</aside>
 			<?php endif; ?>

@@ -30,7 +30,7 @@ if (!function_exists('_bless_posted_on')):
 		);
 
 		printf(
-			'<div class="publish-date font-semibold"><a href="%1$s" rel="bookmark">%2$s</a></div>',
+			'<div class="date"><a href="%1$s" rel="bookmark">%2$s</a></div>',
 			esc_url(get_permalink()),
 			$time_string // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		);
@@ -45,10 +45,86 @@ if (!function_exists('_bless_posted_by')):
 	{
 		printf(
 			/* translators: 1: posted by label, only visible to screen readers. 2: author link. 3: post author. */
-			'<div class="publish-author"><span class="sr-only">%1$s</span><span class="author vcard"><a class="url fn n" href="%2$s">%3$s</a></span></div>',
+			'<div class="author flex gap-2"><span class="sr-only">%1$s</span></span><a href="%2$s" class="author-link default-transition"><span class="material-symbols-outlined mr-2 text-(--no1-blue)">person</span>%3$s</a></div>',
 			esc_html__('Posted by', '_bless'),
 			esc_url(get_author_posts_url(get_the_author_meta('ID'))),
 			esc_html(get_the_author())
+		);
+	}
+endif;
+
+if (!function_exists('_bless_categories')):
+
+	function _bless_categories()
+	{
+		/* translators: used between list items, there is a space after the comma. */
+		$categories_list = get_the_category_list(__(', ', '_bless'));
+		if ($categories_list) {
+			printf(
+				//%2$s - removed from sr-only line
+				/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
+				'<div class="category"><span class="sr-only">%1$s</span>',
+				esc_html__('Posted in', '_bless'),
+				$categories_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			);
+		}
+
+		$categories = get_the_category();
+		$separator = ', ';
+		$output = '';
+
+		if ($categories) {
+			foreach ($categories as $category) {
+				$output .= '<a class="category-link default-transition" href="' . get_category_link($category->term_id) . '">
+						<span class="material-symbols-outlined text-[10px] text-(--no1-red) mr-2">inbox_text</span>' . $category->name . '</a></div>' . $separator;
+			}
+			echo trim($output, $separator);
+		}
+	}
+endif;
+
+
+
+if (!function_exists('_bless_tags')):
+
+	function _bless_tags()
+	{
+		/* translators: used between list items, there is a space after the comma. */
+		$tags_list = get_the_tag_list('', __(', ', '_bless'));
+		if ($tags_list) {
+			printf(
+				/* translators: 1: tags label, only visible to screen readers. 2: list of tags. */
+				'<div class="tag"><span class="sr-only">%1$s</span>',
+				esc_html__('Tags:', '_bless'),
+				$tags_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			);
+		}
+
+		$tags = get_the_tags();
+		$separator = ', ';
+		$output = '';
+
+		if ($tags) {
+			foreach ($tags as $tag) {
+				$output .= '<a class="tag-link default-transition" href="' . get_tag_link($tag->term_id) . '">
+						<span class="material-symbols-outlined text-[10px] text-(--no1-green) mr-2">bookmark</span>' . $tag->name . '</a></div>' . $separator;
+			}
+			echo trim($output, $separator);
+		}
+	}
+endif;
+
+if (!function_exists('_bless_permalink')):
+	/**
+	 * Prints HTML with meta information about theme author.
+	 */
+	function _bless_permalink()
+	{
+		printf(
+			'<div class="read-more"><a href="%1$s" class="read-more-link default-transition">%2$s<span class="material-symbols-outlined !text-[16px] ml-1">%3$s</span></a></div>',
+			esc_url(get_permalink()),
+			esc_html__('Read More', '_bless'),
+			'arrow_forward'
 		);
 	}
 endif;
@@ -77,24 +153,17 @@ if (!function_exists('_bless_entry_meta')):
 		// Hide author, post date, category and tag text for pages.
 		if ('post' === get_post_type()) {
 
-			// Posted by.
+			// Author
 			_bless_posted_by();
 
-			// Posted on.
+			// Date
 			_bless_posted_on();
 
+			// Category
 			_bless_categories();
 
-			/* translators: used between list items, there is a space after the comma. */
-			$tags_list = get_the_tag_list('', __(', ', '_bless'));
-			if ($tags_list) {
-				printf(
-					/* translators: 1: tags label, only visible to screen readers. 2: list of tags. */
-					'<span class="sr-only">%1$s</span>%2$s',
-					esc_html__('Tags:', '_bless'),
-					$tags_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				);
-			}
+			// Tags
+			_bless_tags();
 		}
 
 		// Comment count.
@@ -117,36 +186,6 @@ if (!function_exists('_bless_entry_meta')):
 				get_the_title()
 			)
 		);
-	}
-endif;
-
-if (!function_exists('_bless_categories')):
-
-	function _bless_categories()
-	{
-		/* translators: used between list items, there is a space after the comma. */
-		$categories_list = get_the_category_list(__(', ', '_bless'));
-		if ($categories_list) {
-			printf(
-				//%2$s - removed from sr-only line
-				/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
-				'<div class="publish-category"><span class="sr-only">%1$s</span>',
-				esc_html__('Posted in', '_bless'),
-				$categories_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			);
-		}
-
-		$categories = get_the_category();
-		$separator = ', ';
-		$output = '';
-
-		if ($categories) {
-			foreach ($categories as $category) {
-				$output .= '<a class="text-[14px] flex items-center dark:text-white hover:text-(--no1-red) transition-all duration-300 " href="' . get_category_link($category->term_id) . '">
-						<span class="material-symbols-outlined text-[10px] text-(--no1-red)">bookmark</span>' . $category->name . '</a></div>' . $separator;
-			}
-			echo trim($output, $separator);
-		}
 	}
 endif;
 
@@ -160,24 +199,17 @@ if (!function_exists('_bless_entry_footer')):
 		// Hide author, post date, category and tag text for pages.
 		if ('post' === get_post_type()) {
 
-			// Posted by.
+			// Author
 			_bless_posted_by();
 
-			// Posted on.
+			// Date
 			_bless_posted_on();
 
+			// Category
 			_bless_categories();
 
-			/* translators: used between list items, there is a space after the comma. */
-			$tags_list = get_the_tag_list('', __(', ', '_bless'));
-			if ($tags_list) {
-				printf(
-					/* translators: 1: tags label, only visible to screen readers. 2: list of tags. */
-					'<span class="sr-only">%1$s</span>%2$s',
-					esc_html__('Tags:', '_bless'),
-					$tags_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				);
-			}
+			// Tags
+			_bless_tags();
 		}
 
 		// Comment count.
@@ -185,7 +217,7 @@ if (!function_exists('_bless_entry_footer')):
 			_bless_comment_count();
 		}
 
-
+		_bless_permalink();
 
 		// Edit post link.
 		edit_post_link(
@@ -201,14 +233,6 @@ if (!function_exists('_bless_entry_footer')):
 				),
 				get_the_title()
 			)
-		);
-
-		// Print read more
-		printf(
-			'<div class="publish-link"><a href="%1$s" class="read-more">%2$s<span class="material-symbols-outlined !text-[16px] ml-1">%3$s</span></a></div>',
-			esc_url(get_permalink()),
-			esc_html__('Read More', '_bless'),
-			'arrow_forward'
 		);
 	}
 endif;
@@ -227,7 +251,7 @@ if (!function_exists('_bless_post_thumbnail')):
 		if (is_singular()):
 ?>
 
-			<figure class="m-0 not-prose row-start-1 col-start-1 z-0">
+			<figure class="">
 				<?php the_post_thumbnail(); ?>
 			</figure><!-- .post-thumbnail -->
 

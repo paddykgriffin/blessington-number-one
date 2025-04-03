@@ -39,10 +39,10 @@ if (!defined('_BLESS_TYPOGRAPHY_CLASSES')) {
 	 */
 	define(
 		'_BLESS_TYPOGRAPHY_CLASSES',
-		'prose prose-neutral max-w-none prose-a:text-primary dark:text-white'
+		'dark:text-white'
 	);
 }
-
+/*prose prose-neutral max-w-none prose-a:text-primary dark:text-white */
 if (!function_exists('_bless_setup')):
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -313,7 +313,7 @@ function add_primary_menu_link($atts, $item, $args, $depth)
 	$menu_locations = ['menu-1']; // Define the menu locations
 
 	if (in_array($args->theme_location, $menu_locations)) {
-		$atts['class'] = 'primary-link'; // Add your custom class
+		$atts['class'] = 'primary-link default-transition'; // Add your custom class
 	}
 	return $atts;
 }
@@ -330,7 +330,7 @@ function add_menu_link_class($atts, $item, $args, $depth)
 	$menu_locations = ['menu-2', 'menu-3']; // Define the menu locations
 
 	if (in_array($args->theme_location, $menu_locations)) {
-		$atts['class'] = 'py-1 block hover:text-tertiary transition-all duration-300 font-light'; // Add your custom class
+		$atts['class'] = 'footer-link default-transition'; // Add your custom class
 	}
 	return $atts;
 }
@@ -414,30 +414,55 @@ add_filter('get_search_form', 'custom_search_form');
 function custom_breadcrumbs()
 {
 	$separator = ' <span class="px-3 material-symbols-outlined text-stone-700 dark:text-white">chevron_right</span> ';
-	echo '<nav class="breadcrumbs bg-gray-100 dark:bg-stone-900 py-2 "><div class="container flex items-center px-4 ">';
+	echo '<nav class="breadcrumbs" aria-label="breadcrumb"><div class="container breadcrumbs-wrap">';
 
 	if (!is_home() && !is_front_page()) {
-		echo '<a href="' . home_url() . '">Home</a>' . $separator;
+		echo '<a class="hover:text-primary dark:hover:text-tertiary" href="' . home_url() . '">Home</a>' . $separator;
 
 		if (is_category()) {
-			echo single_cat_title('', false);
+			echo '<span class="text-primary dark:ttext-tertiary">' . single_cat_title('', false) . '</span>';
 		} elseif (is_single()) {
-			the_category(', ');
-			echo $separator;
-			the_title();
+			$categories = get_the_category();
+			if (!empty($categories)) {
+				echo '<a href="' . get_category_link($categories[0]->term_id) . '">' . esc_html($categories[0]->name) . '</a>';
+				echo $separator;
+			}
+			echo '<span> class="text-primary dark:text-tertiary"' . get_the_title() . '</span>';
 		} elseif (is_page()) {
-			the_title();
+			echo '<span class="text-primary dark:text-tertiary">' . get_the_title() . '</span>';
 		} elseif (is_404()) {
-			echo '404';
+			echo '<span class="text-primary dark:text-tertiary">404 Not Found</span>';
 		} elseif (is_search()) {
-			echo 'Search results for "' . get_search_query() . '"';
+			echo '<span class="text-primary dark:text-tertiary">Search results for "' . get_search_query() . '"</span>';
 		} elseif (is_archive()) {
-			the_archive_title();
+			echo '<span class="text-primary dark:text-tertiary">' . get_the_archive_title() . '</span>';
 		}
 	} else {
-		echo '<a href="' . home_url() . '" class="text-stone-700">Home</a>' . $separator .
-			'<span class="text-secondary">Latest News</span>'; // Optional message for index.php
+		echo '<a href="' . home_url() . '" class="dark:text-white hover:text-primary dark:hover:text-tertiary">Home</a>' . $separator .
+			'<span class="text-primary dark:text-tertiary">Latest News</span>'; // Optional message for index.php
 	}
 
 	echo '</div></nav>';
 }
+
+
+
+function custom_archive_title($title)
+{
+	if (is_category()) {
+		$title = '<span>Category</span><span class="material-symbols-outlined !text-4xl">chevron_right</span><span>' . single_cat_title('', false) . '</span>';
+	}
+	if (is_month()) {
+		$title = '<span>Monthly Archive</span><span class="material-symbols-outlined !text-4xl">chevron_right</span><span>' . get_the_date('F Y') . '</span>';
+	} elseif (is_tag()) {
+		$title = '<span>Tags</span><span class="material-symbols-outlined !text-4xl">chevron_right</span><span> ' . single_tag_title('', false) . '</span>';
+	} elseif (is_author()) {
+		$title = '<span>Author</span><span class="material-symbols-outlined !text-4xl">chevron_right</span><span>' . get_the_author() . '</span';
+	} elseif (is_tax()) {
+		$title = '<span>Taxonomy</span><span class="material-symbols-outlined !text-4xl">chevron_right</span><span>' . single_term_title('', false) . '</span>';
+	} elseif (is_post_type_archive()) {
+		$title = '<span>Post Type</span><span class="material-symbols-outlined !text-4xl">chevron_right</span><span>' . post_type_archive_title('', false) . '</span>';
+	}
+	return $title;
+}
+add_filter('get_the_archive_title', 'custom_archive_title');

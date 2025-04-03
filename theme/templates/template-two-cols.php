@@ -25,8 +25,8 @@ $slug = get_top_parent_slug(get_post());
 <?php custom_breadcrumbs(); ?>
 <div id="page" class="content-page py-8 lg:py-16">
     <div class="container mx-auto px-8 py-8">
-        <div class="grid md:grid-cols-12 md:gap-16 lg:gap-0">
-            <div class="md:col-span-8">
+        <div class="grid md:grid-cols-12 md:gap-16 xl:gap-0">
+            <div class="md:col-span-8 xl:col-span-8">
                 <?php
                 /* Start the Loop */
                 while (have_posts()) :
@@ -48,7 +48,7 @@ $slug = get_top_parent_slug(get_post());
             </div>
             <!-- .left-col -->
 
-            <aside class="lg:col-start-10 md:col-span-4 lg:col-span-3 pt-8 sidebar" role="complementary" aria-label="<?php esc_attr_e('Sidebar', '_tw'); ?>">
+            <aside class="md:col-start-9 xl:col-start-10 md:col-span-4 xl:col-span-3 pt-8 sidebar" role="complementary" aria-label="<?php esc_attr_e('Sidebar', '_tw'); ?>">
                 <?php
                 // Load different sidebar based on top-level parent slug
                 if ($slug == 'about') {

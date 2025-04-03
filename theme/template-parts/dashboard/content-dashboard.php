@@ -28,7 +28,7 @@
 
 	</div><!-- .entry-content sample -->
 
-	<div class="grid grid-cols-12 gap-8">
+	<div class="grid grid-cols-12 gap-8 hidden">
 		<div class="div col-span-7">
 			<div class="grid  grid-cols-2 gap-8">
 				<div class="div bg-gray-200 p-6 rounded-2xl">

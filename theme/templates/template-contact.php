@@ -19,8 +19,6 @@ get_header();
                     the_post();
 
                     get_template_part('template-parts/content/content', 'contact');
-
-
                     // If comments are open, or we have at least one comment, load
                     // the comment template.
                     if (comments_open() || get_comments_number()) {
@@ -32,36 +30,34 @@ get_header();
 
 
                 <div class="md:grid md:grid-cols-12 md:gap-8 pb-12 justify-center md:pt-8">
-                    <div class="md:col-span-6 xl:col-span-5">
+                    <div class="md:col-span-5 xl:col-span-4">
                         <?php if (is_active_sidebar('sidebar-contact')) : ?>
-                            <div class="bg-gray-100 px-4 py-6 rounded-2xl dark:bg-stone-900">
+                            <div class="bg-gray-100 px-4 py-6 pb-0 dark:bg-transparent dark:border-[1px] dark:border-gray-100/20">
                                 <h3 class="md:text-left">Send us a message</h3>
                                 <?php dynamic_sidebar('sidebar-contact'); ?>
                             </div>
                         <?php endif; ?>
                     </div>
-                    <div class="md:col-span-6 xl:col-span-6 xl:col-start-7">
+                    <div class="md:col-span-7 xl:col-span-8">
                         <div class="py-12 md:py-0">
-                            <?php get_template_part('template-parts/layout/footer/footer', 'touch'); ?>
-                        </div>
-                        <div class="">
-                            <?php get_template_part('template-parts/custom/custom', 'map'); ?>
-                        </div>
+                            <div class="grid md:grid-cols-12 bg-primary dark:bg-stone-900 items-center">
+                                <div class="col-span-6">
+                                    <?php get_template_part('template-parts/custom/custom', 'getintouch'); ?>
+                                </div>
+                                <div class="col-span-6 contact-featured-img">
+                                    <?php
+                                    _bless_post_thumbnail();
+                                    ?>
 
+                                </div>
+                            </div>
+                        </div>
+                        <?php get_template_part('template-parts/custom/custom', 'map'); ?>
                     </div>
-
-
-
                 </div>
                 <!-- .grid -->
-
-
-
-
-
             </div>
             <!-- page content -->
-
         </div>
         <!-- .grid -->
     </div>

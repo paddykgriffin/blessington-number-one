@@ -19,8 +19,8 @@ get_header();
 <section id="posts" class="posts py-8 lg:py-16">
 
 	<div class="container mx-auto px-8 py-8">
-		<div class="grid md:grid-cols-12 gap-8">
-			<div class="md:col-span-7 xl:col-span-8 show-search">
+		<div class="grid md:grid-cols-12 md:gap-16 xl:gap-0">
+			<div class="md:col-span-8 xl:col-span-8 posts-content">
 
 
 
@@ -35,7 +35,8 @@ get_header();
 
 
 						<?php echo get_search_form(); ?>
-				<?php
+						<div class="posts-wrapper grid gap-8">
+					<?php
 					endif;
 
 					// Load posts loop.
@@ -51,15 +52,15 @@ get_header();
 					// If no content, include the "No posts found" template.
 					get_template_part('template-parts/content/content', 'none');
 				}
-				?>
-
+					?>
+						</div>
 
 
 
 
 			</div>
 			<?php if (is_active_sidebar('news-sidebar')) : ?>
-				<aside class="md:col-start-10 md:col-span-4 xl:col-span-3 pt-8" role="complementary" aria-label="<?php esc_attr_e('Footer', '_tw'); ?>">
+				<aside class="md:col-start-9 xl:col-start-10 md:col-span-4 xl:col-span-3 pt-8 posts-sidebar" role="complementary" aria-label="<?php esc_attr_e('Footer', '_tw'); ?>">
 					<?php echo get_search_form(); ?>
 					<?php dynamic_sidebar('news-sidebar'); ?>
 				</aside>

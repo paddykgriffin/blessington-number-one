@@ -10,14 +10,8 @@
 
 ?>
 
-<div id="welcome-<?php the_ID(); ?>" <?php post_class('grid md:grid-cols-2 container  items-center mx-auto gap-16  pt-12 pb-1 md:py-18 lg:py-32 dark:text-white '); ?>>
-
-
-
-
-
-	<div <?php _bless_content_class('home-block dark:text-white text-center md:text-left px-8 xl:px-0 '); ?>>
-
+<div id="welcome-<?php the_ID(); ?>" <?php post_class('grid md:grid-cols-2 container items-center mx-auto gap-16  pt-12 pb-1 md:py-18 lg:py-32 dark:text-white '); ?>>
+	<div <?php _bless_content_class('home-block'); ?>>
 		<header class="entry-header">
 			<?php
 			if (!is_front_page()) {
@@ -26,7 +20,8 @@
 				the_title('<h2 class="entry-title not-prose">', '</h2>');
 			}
 			?>
-		</header><!-- .entry-header -->
+		</header>
+
 		<?php
 		the_content();
 
@@ -37,14 +32,10 @@
 			)
 		);
 		?>
-
-	</div><!-- .entry-content -->
-
-	<div class="div">
-		<?php _bless_post_thumbnail(); ?>
 	</div>
+	<!-- .home-block -->
 
-
+	<?php _bless_post_thumbnail(); ?>
 
 	<?php if (get_edit_post_link()): ?>
 
