@@ -1,4 +1,4 @@
-<section id="hero" class="h-[90dvh] md:h-[55dvh] xl:h-[90dvh] grid relative">
+<section id="hero" class="h-[90dvh] md:h-[55dvh] xl:h-[90dvh] 2xl:h-[70dvh] grid relative">
     <div class="container text-center grid col-start-1 row-start-1 items-end z-20 px-8 lg:px-0">
         <h2 class="text-4xl lg:text-6xl xl:text-7xl 2xl:text-8xl text-white dark:text-white font-mono font-bold drop-shadow-xl"><?php the_field('hero_title', 'option'); ?></h2>
         <?php if (have_rows('boxes', 'option')): ?>
@@ -23,7 +23,7 @@
             </div>
         <?php endif; ?>
         <div class=" pb-14 flex flex-col">
-            <p class="text-xs font-medium text-white pb-3">Scroll Down</p>
+            <p class="text-sm font-medium text-white pb-3">Scroll Down</p>
             <span class="material-symbols-outlined text-white !text-[40px] animate-bounce duration-500">
                 mouse
             </span>

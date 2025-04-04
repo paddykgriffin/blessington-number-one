@@ -1,25 +1,20 @@
-<?php if (have_rows('school_polices',)): ?>
-    <div class="policy-list grid lg:grid-cols-2 gap-4 mt-8">
-        <?php while (have_rows('school_polices',)):
-            the_row(); ?>
-
-            <?php $link = get_sub_field('policy_url');
-
-            if ($link): ?>
-                <div class="">
+<?php
+if (is_page('school-polices')): // page slug
+    if (have_rows('school_polices', 'option')): ?>
+        <div class="policy-list">
+            <?php while (have_rows('school_polices', 'option')):
+                the_row(); ?>
+                <?php $link = get_sub_field('policy_url');
+                if ($link): ?>
                     <a href="<?php echo esc_url($link); ?>"
-                        class="px-3 py-5 bg-gray-200/50 text-primary dark:text-white rounded-xl hover:bg-primary hover:text-white dark:bg-primary dark:hover:bg-secondary flex items-center gap-3 group justify-between default-transition" target="_blank">
-
-                        <?php the_sub_field('policy_name'); ?>
-
+                        class="policy-block default-transition group" target="_blank">
+                        <h4 class="group-hover:text-white "> <?php the_sub_field('policy_name'); ?></h4>
                         <span class="material-symbols-outlined text-red-500 dark:text-white group-hover:text-white !text-[30px] lg:!text-[40px]">
                             picture_as_pdf
                         </span>
-
                     </a>
-                </div>
-            <?php endif; ?>
-
-        <?php endwhile; ?>
-    </div>
-<?php endif; ?>
+                <?php endif; ?>
+            <?php endwhile; ?>
+        </div>
+<?php endif;
+endif; ?>

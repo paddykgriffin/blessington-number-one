@@ -99,7 +99,7 @@
 
 /* Home Posts */
 .home-posts .post-wrapper {
-	@apply md:flex-col 
+	@apply md:flex-col md:rounded-bl-none  md:rounded-tr-2xl
 }
 
 
@@ -137,18 +137,20 @@
 .posts-sidebar .search-form {
 	@apply hidden md:flex
 }
-
+.posts-content .post-wrapper .entry-content {
+	@apply xl:py-0
+}
 
 
 /* Post - Header */
 .post-title {
-	@apply text-2xl text-secondary font-semibold md:leading-8 dark:text-primary mb-0 hover:text-primary dark:hover:text-tertiary hover:pl-3
+	@apply text-2xl text-secondary font-semibold md:leading-8 dark:text-primary hover:text-primary dark:hover:text-tertiary hover:pl-3
 }
 
 
 /* Post - Meta */
 .entry-meta {
-	@apply flex justify-between
+	@apply flex justify-between md:flex-col lg:flex-row gap-2
 }
 .entry-meta .date {
 	@apply hidden
@@ -385,4 +387,36 @@
 }
 .get-in-touch-icon {
 	@apply pr-4 text-tertiary dark:text-primary
+}
+
+/* Staff Lists */
+.staff-list {
+	@apply py-8
+}
+.staff-list h2 {
+	@apply text-3xl font-semibold text-secondary dark:text-white
+}
+
+.staff-list-wrapper {
+	@apply grid md:grid-cols-2 gap-4 mt-4
+}
+
+.staff-list-block {
+	@apply bg-gray-100 px-3 py-5 rounded-xl dark:bg-primary flex justify-between
+}
+
+.staff-list-block h3 {
+	@apply font-semibold text-xl text-secondary dark:text-white
+}
+
+
+/* Policy Lists */
+.policy-list {
+	@apply grid lg:grid-cols-2 gap-4 mt-8
+}
+.policy-block {
+	@apply px-3 py-5 bg-gray-200/50 text-primary dark:text-white rounded-xl hover:bg-primary hover:text-white dark:bg-primary dark:hover:bg-secondary flex items-center gap-3 justify-between
+} 
+.policy-block h4 {
+	@apply font-semibold text-xl m-0 p-0 text-primary dark:text-white
 }

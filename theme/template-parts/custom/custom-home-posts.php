@@ -1,7 +1,7 @@
 <section id="latest-posts" class="home-posts py-22">
     <div class="container px-8 xl:px-0 ">
         <h2 class="entry-title">Latest posts</h2>
-        <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 md:gap-8 xl:gap-16 pt-8 max-w-[25rem] lg:max-w-full mx-auto">
+        <div class="grid md:grid-cols-3 lg:grid-cols-3 gap-8 md:gap-2 lg:gap-8 xl:gap-16 pt-8  lg:max-w-full mx-auto">
             <?php
             // the query
             $the_query = new WP_Query(array(

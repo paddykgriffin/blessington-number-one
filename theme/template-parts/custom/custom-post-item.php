@@ -2,8 +2,8 @@
      <div class="entry-thumbnail">
          <?php _bless_post_thumbnail(); ?>
      </div>
-     <div class="entry-content px-4 py-9 dark:bg-stone-900 md:rounded-tr-none ">
-         <header class="entry-header md:px-4 xl:px-0 pb-3">
+     <div class="entry-content px-4 py-8 lg:py-8 ">
+         <header class="entry-header md:max-w-none">
              <div class="entry-meta pb-4 ">
                  <?php /* _bless_entry_meta(); */ ?>
                  <?php _bless_categories(); ?>
@@ -27,7 +27,7 @@
          </header>
          <!-- .entry-header -->
 
-         <div <?php _bless_content_class('entry-content pb-4 '); ?>>
+         <div <?php _bless_content_class('entry-post-content pb-4'); ?>>
              <?php echo get_the_excerpt();
                 wp_link_pages(
                     array(
